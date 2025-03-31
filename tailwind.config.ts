@@ -63,13 +63,13 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Portfolio custom colors
+				// Modern futuristic palette
 				theme: {
-					purple: '#4A148C',
-					teal: '#006064',
-					gold: '#FFC107',
-					dark: '#121212',
-					light: '#F5F5F7'
+					electricBlue: '#007BFF',
+					pureWhite: '#FFFFFF',
+					deepBlack: '#0A0A0A',
+					neonPurple: '#8A2BE2',
+					neonPink: '#D400FF',
 				}
 			},
 			borderRadius: {
@@ -111,6 +111,32 @@ export default {
 						'background-size': '200% 200%',
 						'background-position': 'right center'
 					}
+				},
+				'float': {
+					'0%, 100%': { transform: 'translateY(0)' },
+					'50%': { transform: 'translateY(-10px)' }
+				},
+				'pulse-glow': {
+					'0%, 100%': { 
+						'opacity': '1',
+						'box-shadow': '0 0 20px 5px rgba(138, 43, 226, 0.7)'
+					},
+					'50%': { 
+						'opacity': '0.7',
+						'box-shadow': '0 0 30px 10px rgba(138, 43, 226, 0.3)'
+					}
+				},
+				'rotate-slow': {
+					'0%': { transform: 'rotate(0deg)' },
+					'100%': { transform: 'rotate(360deg)' }
+				},
+				'tilt': {
+					'0%, 100%': { transform: 'perspective(1000px) rotateY(0deg)' },
+					'50%': { transform: 'perspective(1000px) rotateY(15deg)' }
+				},
+				'background-pan': {
+					'0%': { backgroundPosition: '0% center' },
+					'100%': { backgroundPosition: '200% center' }
 				}
 			},
 			animation: {
@@ -120,8 +146,25 @@ export default {
 				'slide-in': 'slide-in 0.6s ease-out',
 				'slide-up': 'slide-up 0.7s ease-out',
 				'pulse-slow': 'pulse-slow 3s infinite',
-				'gradient-x': 'gradient-x 3s ease infinite'
-			}
+				'gradient-x': 'gradient-x 3s ease infinite',
+				'float': 'float 3s ease-in-out infinite',
+				'pulse-glow': 'pulse-glow 3s infinite',
+				'rotate-slow': 'rotate-slow 12s linear infinite',
+				'tilt': 'tilt 6s ease-in-out infinite',
+				'background-pan': 'background-pan 3s linear infinite'
+			},
+			backgroundImage: {
+				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+				'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+				'neon-grid': 'linear-gradient(rgba(138, 43, 226, 0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(138, 43, 226, 0.4) 1px, transparent 1px)',
+				'hero-gradient': 'linear-gradient(to right, rgba(0, 123, 255, 0.1), rgba(138, 43, 226, 0.1))',
+				'glow-text': 'linear-gradient(90deg, rgba(0, 123, 255, 1) 0%, rgba(212, 0, 255, 1) 100%)',
+			},
+			boxShadow: {
+				'neon': '0 0 10px rgba(138, 43, 226, 0.7), 0 0 20px rgba(138, 43, 226, 0.5), 0 0 30px rgba(138, 43, 226, 0.3)',
+				'neon-blue': '0 0 10px rgba(0, 123, 255, 0.7), 0 0 20px rgba(0, 123, 255, 0.5)',
+				'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.37)',
+			},
 		}
 	},
 	plugins: [require("tailwindcss-animate")],

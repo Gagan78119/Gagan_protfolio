@@ -1,6 +1,6 @@
 
 import { useState } from 'react';
-import { ArrowRight, X } from 'lucide-react';
+import { ArrowRight, X, ExternalLink } from 'lucide-react';
 
 export interface CaseStudy {
   id: number;
@@ -28,26 +28,30 @@ const CaseStudyCard = ({ project }: CaseStudyCardProps) => {
   return (
     <>
       <div 
-        className="group rounded-xl overflow-hidden card-hover cursor-pointer bg-card h-full flex flex-col"
+        className="group rounded-xl overflow-hidden hover-tilt cursor-pointer glass-card h-full flex flex-col border border-white/10"
         onClick={openModal}
       >
         <div className="relative overflow-hidden">
-          <div className="aspect-video bg-muted w-full">
+          <div className="aspect-video bg-muted/30 w-full">
             <img 
               src={project.thumbnail} 
               alt={project.title}
               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
             />
           </div>
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-            <span className="text-white text-sm font-medium">View Case Study</span>
+          <div className="absolute inset-0 bg-gradient-to-t from-theme-deepBlack/90 via-theme-deepBlack/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+            <div className="w-full">
+              <span className="text-white text-sm font-medium flex items-center">
+                View Case Study <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
+              </span>
+            </div>
           </div>
         </div>
 
         <div className="p-5 flex-1 flex flex-col">
           <div className="flex-1">
-            <div className="text-xs font-medium text-primary mb-2">{project.category}</div>
-            <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">{project.title}</h3>
+            <div className="text-xs font-medium text-theme-electricBlue mb-2">{project.category}</div>
+            <h3 className="text-xl font-bold mb-2 group-hover:text-theme-electricBlue transition-colors">{project.title}</h3>
             <p className="text-foreground/70 text-sm line-clamp-2">{project.description}</p>
           </div>
           
@@ -55,13 +59,13 @@ const CaseStudyCard = ({ project }: CaseStudyCardProps) => {
             {project.tags.slice(0, 3).map((tag, index) => (
               <span 
                 key={index} 
-                className="px-2 py-1 text-xs rounded-full bg-muted text-foreground/70"
+                className="px-2 py-1 text-xs rounded-full bg-white/5 text-foreground/70 border border-white/10"
               >
                 {tag}
               </span>
             ))}
             {project.tags.length > 3 && (
-              <span className="px-2 py-1 text-xs rounded-full bg-muted text-foreground/70">
+              <span className="px-2 py-1 text-xs rounded-full bg-white/5 text-foreground/70 border border-white/10">
                 +{project.tags.length - 3}
               </span>
             )}
@@ -71,16 +75,16 @@ const CaseStudyCard = ({ project }: CaseStudyCardProps) => {
 
       {/* Case Study Modal */}
       {isModalOpen && (
-        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 overflow-y-auto">
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-md z-50 flex items-center justify-center p-4 overflow-y-auto">
           <div 
-            className="bg-card rounded-xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto animate-slide-up"
+            className="bg-gradient-to-br from-theme-deepBlack/95 to-theme-deepBlack/80 glass rounded-xl shadow-neon max-w-4xl w-full max-h-[90vh] overflow-y-auto animate-fade-in border border-white/10"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="sticky top-0 z-10 flex justify-between items-center p-4 bg-card border-b">
-              <h3 className="text-xl font-bold">{project.title}</h3>
+            <div className="sticky top-0 z-10 flex justify-between items-center p-4 border-b border-white/10 backdrop-blur-md bg-theme-deepBlack/50">
+              <h3 className="text-xl font-bold grad-text">{project.title}</h3>
               <button 
                 onClick={closeModal}
-                className="p-2 rounded-full hover:bg-muted transition-colors"
+                className="p-2 rounded-full bg-white/5 hover:bg-white/10 transition-colors"
                 aria-label="Close modal"
               >
                 <X size={20} />
@@ -88,26 +92,29 @@ const CaseStudyCard = ({ project }: CaseStudyCardProps) => {
             </div>
 
             <div className="p-6">
-              <div className="mb-8">
-                <img 
-                  src={project.thumbnail} 
-                  alt={project.title}
-                  className="w-full rounded-lg object-cover max-h-[40vh]"
-                />
+              <div className="mb-8 group">
+                <div className="relative overflow-hidden rounded-lg">
+                  <img 
+                    src={project.thumbnail} 
+                    alt={project.title}
+                    className="w-full rounded-lg object-cover max-h-[40vh]"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-theme-deepBlack/80 to-transparent opacity-70"></div>
+                </div>
               </div>
 
               <div className="grid md:grid-cols-3 gap-6 mb-8">
-                <div className="bg-muted/50 p-4 rounded-lg">
-                  <h4 className="font-semibold mb-2 text-primary">Category</h4>
+                <div className="glass-card p-4 rounded-lg">
+                  <h4 className="font-semibold mb-2 text-theme-electricBlue">Category</h4>
                   <p>{project.category}</p>
                 </div>
-                <div className="bg-muted/50 p-4 rounded-lg col-span-2">
-                  <h4 className="font-semibold mb-2 text-primary">Tags</h4>
+                <div className="glass-card p-4 rounded-lg col-span-2">
+                  <h4 className="font-semibold mb-2 text-theme-electricBlue">Tags</h4>
                   <div className="flex flex-wrap gap-2">
                     {project.tags.map((tag, index) => (
                       <span 
                         key={index} 
-                        className="px-2 py-1 text-xs rounded-full bg-background text-foreground/70"
+                        className="px-2 py-1 text-xs rounded-full bg-white/5 text-foreground/70 border border-white/10"
                       >
                         {tag}
                       </span>
@@ -117,32 +124,47 @@ const CaseStudyCard = ({ project }: CaseStudyCardProps) => {
               </div>
 
               <div className="space-y-8">
-                <div>
-                  <h4 className="text-xl font-semibold mb-3 text-primary">The Challenge</h4>
+                <div className="glass-card p-6 rounded-lg">
+                  <h4 className="text-xl font-semibold mb-3 text-theme-electricBlue flex items-center">
+                    <span className="w-8 h-8 inline-flex items-center justify-center bg-theme-electricBlue/20 rounded-full mr-2">01</span>
+                    The Challenge
+                  </h4>
                   <p>{project.challenge}</p>
                 </div>
 
-                <div>
-                  <h4 className="text-xl font-semibold mb-3 text-primary">Process & Approach</h4>
+                <div className="glass-card p-6 rounded-lg">
+                  <h4 className="text-xl font-semibold mb-3 text-theme-electricBlue flex items-center">
+                    <span className="w-8 h-8 inline-flex items-center justify-center bg-theme-electricBlue/20 rounded-full mr-2">02</span>
+                    Process & Approach
+                  </h4>
                   <p>{project.process}</p>
                 </div>
 
-                <div>
-                  <h4 className="text-xl font-semibold mb-3 text-primary">Solution</h4>
+                <div className="glass-card p-6 rounded-lg">
+                  <h4 className="text-xl font-semibold mb-3 text-theme-electricBlue flex items-center">
+                    <span className="w-8 h-8 inline-flex items-center justify-center bg-theme-electricBlue/20 rounded-full mr-2">03</span>
+                    Solution
+                  </h4>
                   <p>{project.solution}</p>
                 </div>
 
-                <div>
-                  <h4 className="text-xl font-semibold mb-3 text-primary">Results & Impact</h4>
-                  <ul className="list-disc pl-5 space-y-2">
+                <div className="glass-card p-6 rounded-lg">
+                  <h4 className="text-xl font-semibold mb-3 text-theme-electricBlue flex items-center">
+                    <span className="w-8 h-8 inline-flex items-center justify-center bg-theme-electricBlue/20 rounded-full mr-2">04</span>
+                    Results & Impact
+                  </h4>
+                  <ul className="space-y-2">
                     {project.results.map((result, index) => (
-                      <li key={index}>{result}</li>
+                      <li key={index} className="flex items-start">
+                        <span className="text-theme-electricBlue mr-2">✓</span>
+                        <span>{result}</span>
+                      </li>
                     ))}
                   </ul>
                 </div>
               </div>
 
-              <div className="mt-8 pt-6 border-t">
+              <div className="mt-8 pt-6 border-t border-white/10 flex justify-between items-center">
                 <button 
                   onClick={closeModal}
                   className="btn-primary inline-flex items-center"
@@ -150,6 +172,15 @@ const CaseStudyCard = ({ project }: CaseStudyCardProps) => {
                   Back to Portfolio
                   <ArrowRight size={16} className="ml-2" />
                 </button>
+                
+                <a 
+                  href="#"
+                  className="inline-flex items-center text-theme-electricBlue hover:underline"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <span>Visit Live Project</span>
+                  <ExternalLink size={14} className="ml-1" />
+                </a>
               </div>
             </div>
           </div>

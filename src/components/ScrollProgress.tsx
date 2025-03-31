@@ -20,8 +20,7 @@ const ScrollProgress = () => {
 
   return (
     <div className="fixed top-0 left-0 w-full h-1 z-50">
-      <div 
-        className="h-full bg-accent transition-all duration-100 ease-out"
+      <div className="h-full bg-gradient-to-r from-theme-electricBlue via-theme-neonPurple to-theme-neonPink transition-all duration-100 ease-out shadow-neon"
         style={{ width: `${scrollPercentage}%` }}
       />
     </div>
