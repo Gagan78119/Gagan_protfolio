@@ -1,6 +1,6 @@
 
 import { useState, useEffect, useRef } from 'react';
-import { ArrowDown, Sparkles } from 'lucide-react';
+import { ArrowDown, Sparkles, ChevronRight } from 'lucide-react';
 
 const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -55,14 +55,14 @@ const Hero = () => {
       className="relative min-h-screen flex items-center justify-center overflow-hidden bg-theme-deepBlack"
     >
       {/* Interactive Background */}
-      <div className="absolute inset-0 bg-neon-grid bg-[length:50px_50px] opacity-10" />
+      <div className="absolute inset-0 bg-neon-grid bg-[length:50px_50px] opacity-5" />
       
       {/* Animated particles */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {particles.map((particle) => (
           <div 
             key={particle.id}
-            className="absolute rounded-full bg-theme-neonPurple/40 animate-float"
+            className="absolute rounded-full bg-theme-neonPurple/30 animate-float"
             style={{ 
               width: `${particle.size}px`,
               height: `${particle.size}px`,
@@ -86,9 +86,9 @@ const Hero = () => {
         />
       </div>
       
-      <div className="container mx-auto px-4 text-center z-10">
+      <div className="container mx-auto px-4 relative z-10 flex flex-col md:flex-row items-center">
         <div 
-          className={`transition-all duration-1000 ease-out ${
+          className={`transition-all duration-1000 ease-out mb-10 md:mb-0 md:w-1/2 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}
         >
@@ -96,27 +96,27 @@ const Hero = () => {
             <Sparkles className="inline-block text-theme-electricBlue animate-pulse-glow h-8 w-8" />
           </div>
           
-          <h1 className="font-bold mb-6 leading-tight">
+          <h1 className="font-bold mb-6 leading-tight text-left">
             <span className="block text-theme-pureWhite">Hello, I'm <span className="grad-text font-bold">John Doe</span></span>
             <span 
               key={headlineIndex}
-              className="grad-text block mt-2 animate-fade-in"
+              className="grad-text block mt-2 animate-fade-in text-4xl md:text-5xl lg:text-6xl"
             >
               {headlines[headlineIndex]}
             </span>
           </h1>
           
-          <p className="text-lg md:text-xl max-w-2xl mx-auto mb-10 text-foreground/80">
+          <p className="text-lg md:text-xl max-w-2xl mx-auto md:mx-0 mb-10 text-foreground/80 text-left">
             A passionate UI/UX designer and frontend developer creating engaging digital experiences that blend futuristic aesthetics with intuitive functionality.
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-4 justify-start">
             <a 
               href="#portfolio" 
               className="glass-card btn-primary flex items-center justify-center gap-2 group"
             >
               <span>View My Work</span>
-              <span className="group-hover:translate-x-1 transition-transform">→</span>
+              <ChevronRight size={18} className="group-hover:translate-x-1 transition-transform" />
             </a>
             <a 
               href="#contact" 
@@ -124,6 +124,30 @@ const Hero = () => {
             >
               Get In Touch
             </a>
+          </div>
+        </div>
+
+        {/* Hero image */}
+        <div 
+          className={`transition-all duration-1000 delay-300 ease-out md:w-1/2 flex justify-center ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
+          <div className="relative">
+            {/* Main image with animated border */}
+            <div className="relative rounded-2xl overflow-hidden border-2 border-white/10 shadow-2xl">
+              <div className="absolute inset-0 bg-gradient-to-br from-theme-electricBlue/30 to-theme-neonPurple/30 mix-blend-overlay"></div>
+              <img 
+                src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=3200&auto=format&fit=crop" 
+                alt="Professional designer working on digital projects"
+                className="w-full h-auto object-cover max-w-md"
+              />
+            </div>
+            
+            {/* Decorative elements */}
+            <div className="absolute -top-4 -right-4 w-24 h-24 bg-theme-neonPurple/20 rounded-full blur-xl"></div>
+            <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-theme-electricBlue/20 rounded-full blur-xl"></div>
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full border-2 border-white/5 rounded-2xl -rotate-3 scale-105"></div>
           </div>
         </div>
         
