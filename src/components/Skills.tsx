@@ -1,10 +1,93 @@
 
 import { useState, useEffect, useRef } from 'react';
-import { ArrowRight, Palette, Code, BarChart, Mail, Smartphone, Globe } from 'lucide-react';
+import SkillCard, { Skill } from './SkillCard';
 
 const Skills = () => {
   const [isInView, setIsInView] = useState(false);
+  const [activeCategory, setActiveCategory] = useState('all');
   const sectionRef = useRef<HTMLElement>(null);
+
+  // Sample skills data
+  const skills: Skill[] = [
+    {
+      name: "UI Design",
+      level: 90,
+      category: "Design",
+      description: "Creating intuitive, visually appealing interfaces with solid design principles."
+    },
+    {
+      name: "UX Research",
+      level: 85,
+      category: "Design",
+      description: "Conducting user research, creating personas, and developing user journeys."
+    },
+    {
+      name: "Wireframing",
+      level: 95,
+      category: "Design",
+      description: "Rapidly developing low-fidelity mockups to explore layout and functionality."
+    },
+    {
+      name: "Prototyping",
+      level: 90,
+      category: "Design",
+      description: "Building interactive prototypes to test and validate design solutions."
+    },
+    {
+      name: "React",
+      level: 85,
+      category: "Development",
+      description: "Building powerful, interactive UIs with React and modern hooks."
+    },
+    {
+      name: "JavaScript/TypeScript",
+      level: 80,
+      category: "Development",
+      description: "Writing clean, maintainable code with modern JavaScript and TypeScript."
+    },
+    {
+      name: "HTML/CSS",
+      level: 95,
+      category: "Development",
+      description: "Creating semantic markup and responsive layouts with modern CSS."
+    },
+    {
+      name: "TailwindCSS",
+      level: 90,
+      category: "Development",
+      description: "Building utility-first designs with speed and consistency."
+    },
+    {
+      name: "Figma",
+      level: 95,
+      category: "Tools",
+      description: "Collaborative design, prototyping, and design systems."
+    },
+    {
+      name: "Adobe Creative Suite",
+      level: 85,
+      category: "Tools",
+      description: "Creating and editing graphics, illustrations, and other visual assets."
+    },
+    {
+      name: "Accessibility",
+      level: 80,
+      category: "Expertise",
+      description: "Building inclusive experiences that work for all users."
+    },
+    {
+      name: "Responsive Design",
+      level: 90,
+      category: "Expertise",
+      description: "Creating layouts that work beautifully across all device sizes."
+    }
+  ];
+
+  const filteredSkills = activeCategory === 'all'
+    ? skills
+    : skills.filter(skill => skill.category.toLowerCase() === activeCategory.toLowerCase());
+
+  const categories = ['all', ...new Set(skills.map(skill => skill.category.toLowerCase()))];
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -28,95 +111,44 @@ const Skills = () => {
     };
   }, []);
 
-  const services = [
-    {
-      icon: <Palette size={24} />,
-      title: "UI/UX Design",
-      description: "Creating intuitive, visually appealing interfaces with solid design principles."
-    },
-    {
-      icon: <Globe size={24} />,
-      title: "Website Design & Development",
-      description: "Building responsive, modern websites optimized for performance and search engines."
-    },
-    {
-      icon: <Code size={24} />,
-      title: "Content Writing",
-      description: "Crafting engaging, SEO-friendly content that connects with your target audience."
-    },
-    {
-      icon: <Smartphone size={24} />,
-      title: "Application Development",
-      description: "Developing custom applications that solve real-world problems."
-    },
-    {
-      icon: <Mail size={24} />,
-      title: "Email Marketing",
-      description: "Creating effective email campaigns that drive engagement and conversions."
-    },
-    {
-      icon: <BarChart size={24} />,
-      title: "Social Media Marketing",
-      description: "Building your brand presence across major social media platforms."
-    }
-  ];
-
   return (
     <section 
-      id="services" 
+      id="skills" 
       ref={sectionRef}
-      className="py-20 bg-gray-50"
+      className="container-section bg-muted/30"
     >
-      <div className="container mx-auto px-4">
-        <div 
-          className={`text-center max-w-3xl mx-auto mb-16 transition-all duration-700 ${
-            isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-          }`}
-        >
-          <div className="text-sm text-blue-500 mb-2">— Services</div>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Services I Provide</h2>
-          <p className="text-gray-600">
-            I offer a wide range of services to help businesses and individuals establish their online presence and achieve their digital goals.
-          </p>
-        </div>
+      <div 
+        className={`transition-all duration-700 ${
+          isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+        }`}
+      >
+        <h2 className="section-title">Skills & Expertise</h2>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map((service, index) => (
-            <div
+        <div className="flex flex-wrap gap-2 mb-8">
+          {categories.map((category, index) => (
+            <button
               key={index}
-              style={{ 
-                transitionDelay: `${index * 100}ms`,
-                opacity: isInView ? 1 : 0,
-                transform: isInView ? 'translateY(0)' : 'translateY(20px)'
-              }}
-              className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 transition-all duration-500 hover:shadow-md group"
+              className={`px-4 py-2 rounded-full text-sm capitalize transition-colors ${
+                activeCategory === category
+                  ? 'bg-primary text-white'
+                  : 'bg-background hover:bg-background/80'
+              }`}
+              onClick={() => setActiveCategory(category)}
             >
-              <div className="w-12 h-12 rounded-lg bg-blue-50 flex items-center justify-center text-blue-500 mb-5">
-                {service.icon}
-              </div>
-              
-              <h3 className="text-xl font-semibold mb-3">{service.title}</h3>
-              <p className="text-gray-600 mb-4">{service.description}</p>
-              
-              <a 
-                href="#contact" 
-                className="inline-flex items-center text-blue-500 text-sm group-hover:text-blue-600"
-              >
-                <span>Learn More</span>
-                <ArrowRight size={16} className="ml-1 group-hover:translate-x-1 transition-transform" />
-              </a>
-            </div>
+              {category === 'all' ? 'All Skills' : category}
+            </button>
           ))}
         </div>
         
-        <div className="text-center mt-12">
-          <a 
-            href="#contact" 
-            className="inline-flex items-center gap-2 bg-blue-500 text-white px-6 py-3 rounded-full hover:bg-blue-600 transition-colors"
-          >
-            <span>See More</span>
-            <ArrowRight size={16} />
-          </a>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {filteredSkills.map((skill, index) => (
+            <SkillCard 
+              key={`${skill.name}-${index}`}
+              skill={skill}
+              delay={index * 100}
+              isInView={isInView}
+            />
+          ))}
         </div>
       </div>
     </section>
