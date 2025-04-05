@@ -1,6 +1,17 @@
 
 import { useState, useEffect, useRef } from 'react';
-import CaseStudyCard, { CaseStudy } from './CaseStudyCard';
+import { Link } from 'react-router-dom';
+import { ArrowRight } from 'lucide-react';
+
+export interface Project {
+  id: number;
+  title: string;
+  category: string;
+  thumbnail: string;
+  description: string;
+  tags: string[];
+  link: string;
+}
 
 const Portfolio = () => {
   const [isInView, setIsInView] = useState(false);
@@ -8,23 +19,15 @@ const Portfolio = () => {
   const sectionRef = useRef<HTMLElement>(null);
 
   // Sample portfolio data
-  const projects: CaseStudy[] = [
+  const projects: Project[] = [
     {
       id: 1,
       title: "E-commerce Redesign",
       category: "UX/UI Design",
       thumbnail: "https://images.unsplash.com/photo-1523289333742-be1143f6b766?q=80&w=1470&auto=format&fit=crop",
       description: "Complete redesign of an e-commerce platform to improve user experience and increase conversions.",
-      challenge: "The client was struggling with high cart abandonment rates and low mobile conversion. The existing interface was cluttered and the checkout process was complicated.",
-      process: "I started with extensive user research and competitive analysis. Created user personas and journey maps to identify pain points. Developed wireframes and interactive prototypes that were tested with real users in multiple iterations.",
-      solution: "Designed a clean, intuitive interface with simplified navigation, improved product filtering, and a streamlined 3-step checkout process. Implemented responsive design principles for optimal mobile experience.",
-      results: [
-        "28% increase in conversion rate",
-        "42% reduction in cart abandonment",
-        "65% improvement in mobile sales",
-        "User satisfaction score improved from 3.2/5 to 4.7/5"
-      ],
-      tags: ["E-commerce", "UX Research", "Wireframing", "Prototyping", "Figma"]
+      tags: ["E-commerce", "UX Research", "Wireframing", "Prototyping", "Figma"],
+      link: "/projects/ecommerce-redesign"
     },
     {
       id: 2,
@@ -32,15 +35,8 @@ const Portfolio = () => {
       category: "Frontend Development",
       thumbnail: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1470&auto=format&fit=crop",
       description: "Interactive dashboard for financial data visualization and analysis.",
-      challenge: "The client needed a way to visualize complex financial data for their customers. The existing solution was static and difficult to understand.",
-      process: "Collaborated with data analysts to understand key metrics. Created information architecture and data visualization sketches. Developed interactive prototypes and tested with target users.",
-      solution: "Built a responsive dashboard using React with interactive charts, customizable views, and real-time data updates. Implemented filters and comparison features for deeper analysis.",
-      results: [
-        "90% of users reported better understanding of their financial data",
-        "User engagement time increased by 230%",
-        "Featured in industry publication for innovative financial tool design"
-      ],
-      tags: ["React", "Data Visualization", "Dashboard", "JavaScript", "Recharts"]
+      tags: ["React", "Data Visualization", "Dashboard", "JavaScript", "Recharts"],
+      link: "/projects/financial-dashboard"
     },
     {
       id: 3,
@@ -48,15 +44,8 @@ const Portfolio = () => {
       category: "Mobile App",
       thumbnail: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=1470&auto=format&fit=crop",
       description: "Mobile application for tracking fitness activities, nutrition, and wellness metrics.",
-      challenge: "Create an intuitive mobile app that helps users track multiple health metrics while making the experience engaging and encouraging consistent use.",
-      process: "Conducted user interviews to understand pain points with existing health apps. Created user flows, wireframes and interactive prototypes. Performed usability testing across different user groups.",
-      solution: "Designed a clean, gamified interface with progress visualization, custom goal setting, and social sharing features. Implemented subtle animations and micro-interactions to create an engaging experience.",
-      results: [
-        "85% user retention after 3 months (industry average is 35%)",
-        "Average 4.8/5 stars in app stores",
-        "Featured in App Store's 'Apps We Love' collection"
-      ],
-      tags: ["Mobile Design", "iOS", "Android", "Gamification", "Health Tech"]
+      tags: ["Mobile Design", "iOS", "Android", "Gamification", "Health Tech"],
+      link: "/projects/health-wellness-app"
     },
     {
       id: 4,
@@ -64,15 +53,8 @@ const Portfolio = () => {
       category: "Branding",
       thumbnail: "https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=1470&auto=format&fit=crop",
       description: "Complete brand identity refresh for a technology consulting firm.",
-      challenge: "The client's brand was outdated and inconsistent across channels. They needed a modern identity that reflected their innovative approach while maintaining brand recognition.",
-      process: "Conducted stakeholder interviews and brand workshops. Researched industry trends and competitor positioning. Developed multiple concept directions before refining the selected approach.",
-      solution: "Created a comprehensive brand system including new logo, color palette, typography, and visual language. Developed detailed brand guidelines and templates for various applications.",
-      results: [
-        "92% of clients reported the new brand better represented the company's values",
-        "Brand recognition increased by 34% in market research",
-        "Won regional design award for corporate rebrand"
-      ],
-      tags: ["Branding", "Logo Design", "Style Guide", "Corporate Identity"]
+      tags: ["Branding", "Logo Design", "Style Guide", "Corporate Identity"],
+      link: "/projects/corporate-brand-refresh"
     }
   ];
 
@@ -129,8 +111,8 @@ const Portfolio = () => {
               key={index}
               className={`px-4 py-2 rounded-full text-sm transition-colors ${
                 activeFilter === filter.value
-                  ? 'bg-primary text-white'
-                  : 'bg-muted hover:bg-muted/80'
+                  ? 'bg-blue-500 text-white'
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
               }`}
               onClick={() => setActiveFilter(filter.value)}
             >
@@ -141,25 +123,65 @@ const Portfolio = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredProjects.map((project, index) => (
-            <div
+            <Link
               key={project.id}
+              to={project.link}
               style={{ 
                 transitionDelay: `${index * 100}ms`,
                 opacity: isInView ? 1 : 0,
                 transform: isInView ? 'translateY(0)' : 'translateY(20px)'
               }}
-              className="transition-all duration-500"
+              className="transition-all duration-500 group rounded-xl overflow-hidden cursor-pointer transform hover:-translate-y-2 hover:shadow-xl bg-white border border-gray-100"
             >
-              <CaseStudyCard project={project} />
-            </div>
+              <div className="relative overflow-hidden">
+                <div className="aspect-video w-full">
+                  <img 
+                    src={project.thumbnail} 
+                    alt={project.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                  <div className="w-full">
+                    <span className="text-white text-sm font-medium flex items-center">
+                      View Project <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="p-5 flex-1 flex flex-col">
+                <div className="flex-1">
+                  <div className="text-xs font-medium text-blue-500 mb-2 bg-blue-50 inline-block px-2 py-1 rounded">{project.category}</div>
+                  <h3 className="text-xl font-bold mb-2 text-gray-800 group-hover:text-blue-500 transition-colors">{project.title}</h3>
+                  <p className="text-gray-600 text-sm line-clamp-2">{project.description}</p>
+                </div>
+                
+                <div className="flex flex-wrap gap-2 mt-4">
+                  {project.tags.slice(0, 3).map((tag, index) => (
+                    <span 
+                      key={index} 
+                      className="px-2 py-1 text-xs rounded-full bg-gray-100 text-gray-600 border border-gray-200"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                  {project.tags.length > 3 && (
+                    <span className="px-2 py-1 text-xs rounded-full bg-gray-100 text-gray-600 border border-gray-200">
+                      +{project.tags.length - 3}
+                    </span>
+                  )}
+                </div>
+              </div>
+            </Link>
           ))}
         </div>
         
         {filteredProjects.length === 0 && (
           <div className="text-center py-12">
-            <p className="text-lg text-foreground/70">No projects found in this category.</p>
+            <p className="text-lg text-gray-500">No projects found in this category.</p>
             <button
-              className="mt-4 btn-primary"
+              className="mt-4 px-6 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-colors"
               onClick={() => setActiveFilter('all')}
             >
               View All Projects

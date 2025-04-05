@@ -30,33 +30,33 @@ const About = () => {
 
   const timelineEvents = [
     {
-      year: "2018",
+      year: "2022",
       title: "Began Design Journey",
       description: "Started exploring UI/UX design principles and tools",
       icon: GraduationCap
     },
     {
-      year: "2019",
-      title: "First Client Project",
-      description: "Redesigned an e-commerce platform increasing conversions by 24%",
+      year: "2022",
+      title: "First Design Project",
+      description: "Created my first UI design for a mobile app",
       icon: Award
     },
     {
-      year: "2020",
-      title: "Expanded to Development",
-      description: "Learned React and began creating full-stack projects",
+      year: "2023",
+      title: "Learned Frontend Development",
+      description: "Started learning HTML, CSS, and JavaScript",
       icon: Heart
     },
     {
-      year: "2021",
-      title: "Agency Experience",
-      description: "Joined a digital agency and worked on 15+ client projects",
+      year: "2023",
+      title: "First React Project",
+      description: "Built my first website using React and TailwindCSS",
       icon: Briefcase
     },
     {
       year: "Present",
-      title: "Freelance & Personal Projects",
-      description: "Creating innovative digital experiences for select clients",
+      title: "Portfolio Development",
+      description: "Working on personal projects to build my portfolio",
       icon: Award
     }
   ];
@@ -83,26 +83,26 @@ const About = () => {
           </div>
           
           <p className="mb-4 text-gray-700 leading-relaxed">
-            I'm a UI/UX designer and frontend developer with a passion for creating beautiful, functional, and accessible digital experiences that make a lasting impression.
+            I'm a beginner UI/UX designer and frontend developer with a passion for creating beautiful, functional, and accessible digital experiences.
           </p>
           
           <p className="mb-4 text-gray-700 leading-relaxed">
-            My approach combines aesthetic sensibility with technical expertise, allowing me to not only design engaging interfaces but also implement them with clean, efficient code.
+            Currently in the early stages of my journey, I'm focused on building my skills in design thinking, user research, and frontend development with React and TailwindCSS.
           </p>
           
           <p className="mb-6 text-gray-700 leading-relaxed">
-            I believe that great design tells a story and creates emotional connections. Whether it's a product, website, or application, I focus on designing meaningful interactions that resonate with users and achieve business goals.
+            I believe that great design solves real problems for users. I'm eager to collaborate on projects that allow me to grow and apply my developing skills in meaningful ways.
           </p>
           
           <div className="grid grid-cols-2 gap-4">
             <div className="p-4 bg-white shadow-md rounded-lg border border-blue-100 hover:shadow-lg transition-shadow">
-              <h4 className="text-blue-500 font-semibold mb-1">Design Philosophy</h4>
-              <p className="text-sm text-gray-600">User-centered, accessible, and purposeful</p>
+              <h4 className="text-blue-500 font-semibold mb-1">Design Focus</h4>
+              <p className="text-sm text-gray-600">User-centered, accessible interfaces</p>
             </div>
             
             <div className="p-4 bg-white shadow-md rounded-lg border border-blue-100 hover:shadow-lg transition-shadow">
-              <h4 className="text-blue-500 font-semibold mb-1">Development Approach</h4>
-              <p className="text-sm text-gray-600">Clean, maintainable, and performant</p>
+              <h4 className="text-blue-500 font-semibold mb-1">Development Focus</h4>
+              <p className="text-sm text-gray-600">React, TailwindCSS, JavaScript</p>
             </div>
           </div>
         </div>
@@ -120,11 +120,11 @@ const About = () => {
               My Journey
             </h3>
             
-            <div className="relative border-l-2 border-blue-200 pl-6 pb-2 space-y-8">
+            <div className="relative border-l-2 border-blue-200 pl-6 pb-2">
               {timelineEvents.map((event, index) => (
                 <div 
                   key={index}
-                  className="relative"
+                  className="relative mb-8 last:mb-0"
                   style={{ 
                     transitionDelay: `${300 + index * 150}ms`,
                     opacity: isInView ? 1 : 0,
