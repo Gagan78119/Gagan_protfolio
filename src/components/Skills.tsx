@@ -73,7 +73,7 @@ const Skills = () => {
             isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}
         >
-          <div className="text-sm text-blue-600 mb-2">— Services</div>
+          <div className="text-sm text-blue-500 mb-2">— Services</div>
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Services I Provide</h2>
           <p className="text-gray-600">
             I offer a wide range of services to help businesses and individuals establish their online presence and achieve their digital goals.
@@ -91,7 +91,7 @@ const Skills = () => {
               }}
               className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 transition-all duration-500 hover:shadow-md group"
             >
-              <div className="w-12 h-12 rounded-lg bg-blue-50 flex items-center justify-center text-blue-600 mb-5">
+              <div className="w-12 h-12 rounded-lg bg-blue-50 flex items-center justify-center text-blue-500 mb-5">
                 {service.icon}
               </div>
               
@@ -100,7 +100,7 @@ const Skills = () => {
               
               <a 
                 href="#contact" 
-                className="inline-flex items-center text-blue-600 text-sm group-hover:text-blue-700"
+                className="inline-flex items-center text-blue-500 text-sm group-hover:text-blue-600"
               >
                 <span>Learn More</span>
                 <ArrowRight size={16} className="ml-1 group-hover:translate-x-1 transition-transform" />
@@ -112,7 +112,7 @@ const Skills = () => {
         <div className="text-center mt-12">
           <a 
             href="#contact" 
-            className="inline-flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
+            className="inline-flex items-center gap-2 bg-blue-500 text-white px-6 py-3 rounded-full hover:bg-blue-600 transition-colors"
           >
             <span>See More</span>
             <ArrowRight size={16} />

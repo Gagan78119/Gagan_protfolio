@@ -1,50 +1,27 @@
 
-import { useState, useEffect, useRef } from 'react';
-import { ArrowDown, ExternalLink } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { ExternalLink } from 'lucide-react';
 
 const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const heroRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     setIsVisible(true);
-    
-    const handleMouseMove = (e: MouseEvent) => {
-      if (heroRef.current) {
-        const { left, top, width, height } = heroRef.current.getBoundingClientRect();
-        const x = (e.clientX - left) / width;
-        const y = (e.clientY - top) / height;
-        setMousePosition({ x, y });
-      }
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-    };
   }, []);
 
   return (
     <section 
       id="hero" 
-      ref={heroRef}
-      className="min-h-screen flex items-center bg-gradient-to-r from-blue-600 to-blue-700 relative overflow-hidden"
+      className="min-h-screen flex items-center bg-gray-50 relative overflow-hidden"
     >
-      {/* Decorative elements */}
-      <div className="absolute top-20 right-20 w-32 h-32 bg-white/10 rounded-full blur-xl"></div>
-      <div className="absolute bottom-20 left-20 w-48 h-48 bg-white/10 rounded-full blur-xl"></div>
-      
-      {/* Interactive glow based on mouse position */}
-      <div 
-        className="absolute w-[30vw] h-[30vw] rounded-full bg-white/5 pointer-events-none blur-3xl"
-        style={{ 
-          left: `${mousePosition.x * 100}%`, 
-          top: `${mousePosition.y * 100}%`,
-          transform: 'translate(-50%, -50%)'
-        }}
-      />
+      {/* Background elements */}
+      <div className="absolute inset-0 z-0">
+        <div className="absolute right-20 top-40 w-96 h-96 rounded-full bg-blue-500/5"></div>
+        <div className="absolute left-10 bottom-20 w-72 h-72 rounded-full bg-blue-500/5"></div>
+        <div className="hidden md:block absolute right-1/4 top-1/4 w-6 h-6 bg-blue-500 rounded-full"></div>
+        <div className="hidden md:block absolute left-1/3 bottom-1/3 w-3 h-3 bg-blue-500 rounded-full"></div>
+        <div className="hidden md:block absolute right-1/3 bottom-1/4 w-4 h-4 border-2 border-blue-500 rounded-full"></div>
+      </div>
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="flex flex-col-reverse md:flex-row items-center justify-between gap-10">
@@ -53,88 +30,96 @@ const Hero = () => {
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
             }`}
           >
-            <div className="mb-3 text-white/80 text-sm md:text-base">
-              Hello! 👋
+            {/* Hello box */}
+            <div className="mb-6 border-2 border-blue-500 inline-flex items-center px-4 py-2 max-w-fit">
+              <div className="w-3 h-3 bg-blue-500 mr-2"></div>
+              <span className="font-medium">Hello !</span>
+              <div className="w-3 h-3 bg-blue-500 ml-2"></div>
             </div>
             
-            <h1 className="font-bold mb-6 leading-tight text-left text-white">
-              <span className="block text-4xl md:text-5xl lg:text-6xl">I'm <span className="text-blue-200 font-bold">John Doe</span>,</span>
-              <span className="block mt-2 text-3xl md:text-4xl lg:text-5xl">
+            <h1 className="font-bold mb-4 leading-tight text-left">
+              <span className="block text-gray-900 text-4xl md:text-5xl">I'm <span className="text-blue-500">Amar Akram</span>,</span>
+              <span className="block text-3xl md:text-4xl mt-3 text-gray-900">
                 Web Designer & <br/>Developer Enthusiast
               </span>
             </h1>
             
-            <p className="text-lg max-w-2xl mb-10 text-white/80 text-left">
-              A passionate UI/UX designer and frontend developer creating engaging digital experiences that blend aesthetics with intuitive functionality.
+            <p className="text-lg max-w-2xl mb-8 text-gray-500 text-left">
+              Innovative Digital Marketer with Expertise in Driving Online Growth Through Strategic Campaigns.
             </p>
             
             <div className="flex flex-row gap-4 justify-start">
               <a 
                 href="#contact" 
-                className="px-6 py-3 bg-white text-blue-600 rounded-lg font-medium hover:bg-blue-50 transition-colors"
+                className="px-8 py-3 bg-blue-500 text-white rounded-full font-medium hover:bg-blue-600 transition-colors"
               >
                 Hire Me
               </a>
               <a 
                 href="#" 
-                className="px-6 py-3 border border-white/30 text-white rounded-lg hover:bg-white/10 transition-colors flex items-center gap-2"
+                className="px-8 py-3 border border-gray-300 text-gray-700 rounded-full hover:border-blue-500 hover:text-blue-500 transition-colors flex items-center gap-2"
               >
-                <span>WhatsApp</span>
-                <ExternalLink size={16} />
+                WhatsApp
               </a>
-            </div>
-
-            <div className="mt-12 flex flex-wrap gap-6">
-              <div className="border-t border-white/20 pt-4 min-w-[110px]">
-                <a href="#services" className="text-white/70 hover:text-white transition-colors text-sm">
-                  Digital Marketing
-                </a>
-              </div>
-              <div className="border-t border-white/20 pt-4 min-w-[110px]">
-                <a href="#services" className="text-white/70 hover:text-white transition-colors text-sm">
-                  Website Development
-                </a>
-              </div>
-              <div className="border-t border-white/20 pt-4 min-w-[110px]">
-                <a href="#services" className="text-white/70 hover:text-white transition-colors text-sm">
-                  UI/UX Design
-                </a>
-              </div>
-              <div className="border-t border-white/20 pt-4 min-w-[110px]">
-                <a href="#services" className="text-white/70 hover:text-white transition-colors text-sm">
-                  Email Marketing
-                </a>
-              </div>
             </div>
           </div>
 
-          {/* Hero image */}
+          {/* Hero image with floating badges */}
           <div 
-            className={`transition-all duration-1000 delay-300 ease-out md:w-1/2 flex justify-center ${
+            className={`transition-all duration-1000 delay-300 ease-out md:w-1/2 flex justify-center relative ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
             }`}
           >
             <div className="relative">
-              <div className="relative overflow-hidden rounded-2xl bg-blue-800">
+              {/* Main image with blue blob background */}
+              <div className="relative z-10">
+                <div className="absolute -z-10 rounded-full bg-blue-500 w-[80%] h-[90%] top-[5%] right-[5%]"></div>
                 <img 
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1287&auto=format&fit=crop"
-                  alt="Professional portrait of John Doe"
-                  className="w-full h-auto max-w-md object-cover"
+                  src="public/lovable-uploads/33c01e1a-2f25-416b-ab30-1a9b7c9b084e.png"
+                  alt="Professional portrait"
+                  className="relative z-10 h-auto max-w-md object-contain"
                 />
-                <div className="absolute inset-0 bg-blue-500/10"></div>
               </div>
               
-              {/* Blue decorative shape */}
-              <div className="absolute -right-5 -bottom-5 w-full h-full border-4 border-blue-400/30 rounded-2xl -z-10"></div>
+              {/* Floating badges */}
+              <div className="absolute top-10 -left-4 md:left-0 z-20 bg-blue-500 text-white px-4 py-2 rounded-full transform rotate-6 shadow-lg">
+                <span className="text-sm font-medium">WEB Designer</span>
+              </div>
+              
+              <div className="absolute bottom-20 right-0 z-20 bg-blue-500 text-white px-4 py-2 rounded-full transform -rotate-3 shadow-lg">
+                <span className="text-sm font-medium">UI/UX Designer</span>
+              </div>
+              
+              <div className="absolute right-0 top-1/2 w-20 h-20 border-2 border-blue-500 border-dashed rounded-full"></div>
             </div>
           </div>
         </div>
-        
-        {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <a href="#about" aria-label="Scroll to about section" className="block p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors">
-            <ArrowDown size={24} className="text-white" />
-          </a>
+      </div>
+      
+      {/* Services banner at bottom */}
+      <div className="absolute bottom-0 left-0 right-0 bg-blue-500 text-white py-4 flex justify-around items-center">
+        <div className="container mx-auto flex flex-wrap justify-between items-center px-4">
+          <div className="flex items-center space-x-2 py-1">
+            <span className="text-xl font-medium">Digital Marketing</span>
+          </div>
+          <div className="hidden md:flex items-center justify-center">
+            <div className="w-6 h-6 text-white opacity-80">✦</div>
+          </div>
+          <div className="flex items-center space-x-2 py-1">
+            <span className="text-xl font-medium">Website Development</span>
+          </div>
+          <div className="hidden md:flex items-center justify-center">
+            <div className="w-6 h-6 text-white opacity-80">✦</div>
+          </div>
+          <div className="flex items-center space-x-2 py-1">
+            <span className="text-xl font-medium">UI/UX Design</span>
+          </div>
+          <div className="hidden md:flex items-center justify-center">
+            <div className="w-6 h-6 text-white opacity-80">✦</div>
+          </div>
+          <div className="flex items-center space-x-2 py-1">
+            <span className="text-xl font-medium">Email Marketing</span>
+          </div>
         </div>
       </div>
     </section>
