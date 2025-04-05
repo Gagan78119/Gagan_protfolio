@@ -1,19 +1,13 @@
 
 import { useState, useEffect } from 'react';
-import { Menu, X, Moon, Sun } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(true);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
-  };
-
-  const toggleTheme = () => {
-    setIsDarkMode(!isDarkMode);
-    // Apply theme change logic here if needed
   };
 
   useEffect(() => {
@@ -35,49 +29,41 @@ const Navbar = () => {
     <nav 
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
         scrolled 
-          ? 'glass border-b border-white/10 py-2' 
-          : 'bg-transparent py-4'
+          ? 'bg-white shadow-sm py-3' 
+          : 'bg-transparent py-5'
       }`}
     >
-      <div className="container mx-auto px-4 md:px-6">
+      <div className="container mx-auto px-4">
         <div className="flex justify-between items-center">
           <a 
             href="#hero" 
-            className="text-2xl font-bold grad-text"
+            className="text-2xl font-bold"
           >
-            Design<span className="text-theme-electricBlue">Future</span>
+            <span className="text-blue-600">JD</span>
           </a>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             <div className="flex space-x-6">
-              <a href="#about" className="hover:text-theme-electricBlue transition-colors hover:scale-105 transform duration-200">About</a>
-              <a href="#portfolio" className="hover:text-theme-electricBlue transition-colors hover:scale-105 transform duration-200">Work</a>
-              <a href="#skills" className="hover:text-theme-electricBlue transition-colors hover:scale-105 transform duration-200">Skills</a>
-              <a href="#contact" className="hover:text-theme-electricBlue transition-colors hover:scale-105 transform duration-200">Contact</a>
+              <a href="#hero" className={`hover:text-blue-600 transition-colors ${scrolled ? 'text-gray-800' : 'text-white'}`}>Home</a>
+              <a href="#about" className={`hover:text-blue-600 transition-colors ${scrolled ? 'text-gray-800' : 'text-white'}`}>About me</a>
+              <a href="#services" className={`hover:text-blue-600 transition-colors ${scrolled ? 'text-gray-800' : 'text-white'}`}>Services</a>
+              <a href="#portfolio" className={`hover:text-blue-600 transition-colors ${scrolled ? 'text-gray-800' : 'text-white'}`}>Projects</a>
+              <a href="#contact" className={`hover:text-blue-600 transition-colors ${scrolled ? 'text-gray-800' : 'text-white'}`}>Contact</a>
             </div>
 
-            <button 
-              onClick={toggleTheme}
-              className="p-2 rounded-full bg-white/5 hover:bg-white/10 transition-colors"
-              aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
+            <a 
+              href="#contact" 
+              className="bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700 transition-colors"
             >
-              {isDarkMode ? <Sun size={18} /> : <Moon size={18} />}
-            </button>
+              Contact me
+            </a>
           </div>
 
           {/* Mobile Navigation Toggle */}
-          <div className="md:hidden flex items-center space-x-4">
+          <div className="md:hidden">
             <button 
-              onClick={toggleTheme}
-              className="p-2 rounded-full bg-white/5 hover:bg-white/10 transition-colors"
-              aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
-            >
-              {isDarkMode ? <Sun size={18} /> : <Moon size={18} />}
-            </button>
-
-            <button 
-              className="text-foreground p-2 rounded-full bg-white/5 hover:bg-white/10 transition-colors"
+              className={`${scrolled || isMenuOpen ? 'text-gray-800' : 'text-white'} p-2`}
               onClick={toggleMenu}
               aria-label="Toggle Menu"
             >
@@ -89,7 +75,7 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       <div 
-        className={`fixed inset-0 glass z-40 md:hidden transition-all duration-500 ${
+        className={`fixed inset-0 bg-white z-40 md:hidden transition-all duration-300 ${
           isMenuOpen 
             ? 'opacity-100 pointer-events-auto' 
             : 'opacity-0 pointer-events-none'
@@ -98,38 +84,45 @@ const Navbar = () => {
         <div className="flex flex-col items-center justify-center h-full space-y-8 text-lg">
           <a 
             href="#hero" 
-            className="text-2xl font-bold grad-text"
+            className="text-gray-800 hover:text-blue-600 transition-colors"
             onClick={toggleMenu}
           >
-            Design<span className="text-theme-electricBlue">Future</span>
+            Home
           </a>
           <a 
             href="#about" 
-            className="hover:text-theme-electricBlue transition-colors transform hover:scale-110" 
+            className="text-gray-800 hover:text-blue-600 transition-colors"
             onClick={toggleMenu}
           >
-            About
+            About me
+          </a>
+          <a 
+            href="#services" 
+            className="text-gray-800 hover:text-blue-600 transition-colors"
+            onClick={toggleMenu}
+          >
+            Services
           </a>
           <a 
             href="#portfolio" 
-            className="hover:text-theme-electricBlue transition-colors transform hover:scale-110" 
+            className="text-gray-800 hover:text-blue-600 transition-colors"
             onClick={toggleMenu}
           >
-            Work
-          </a>
-          <a 
-            href="#skills" 
-            className="hover:text-theme-electricBlue transition-colors transform hover:scale-110" 
-            onClick={toggleMenu}
-          >
-            Skills
+            Projects
           </a>
           <a 
             href="#contact" 
-            className="hover:text-theme-electricBlue transition-colors transform hover:scale-110" 
+            className="text-gray-800 hover:text-blue-600 transition-colors"
             onClick={toggleMenu}
           >
             Contact
+          </a>
+          <a 
+            href="#contact" 
+            className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
+            onClick={toggleMenu}
+          >
+            Contact me
           </a>
         </div>
       </div>
