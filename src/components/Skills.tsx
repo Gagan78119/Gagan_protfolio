@@ -1,85 +1,86 @@
 
 import { useState, useEffect, useRef } from 'react';
 import SkillCard, { Skill } from './SkillCard';
+import { Code, Palette, Hammer, Lightbulb } from 'lucide-react';
 
 const Skills = () => {
   const [isInView, setIsInView] = useState(false);
   const [activeCategory, setActiveCategory] = useState('all');
   const sectionRef = useRef<HTMLElement>(null);
 
-  // Sample skills data
+  // Sample skills data with improved descriptions
   const skills: Skill[] = [
     {
       name: "UI Design",
       level: 90,
       category: "Design",
-      description: "Creating intuitive, visually appealing interfaces with solid design principles."
+      description: "Creating intuitive, visually appealing interfaces with solid design principles and attention to detail."
     },
     {
       name: "UX Research",
       level: 85,
       category: "Design",
-      description: "Conducting user research, creating personas, and developing user journeys."
+      description: "Conducting user interviews, creating personas, and developing user journeys to inform design decisions."
     },
     {
       name: "Wireframing",
-      level: 95,
+      level: 92,
       category: "Design",
-      description: "Rapidly developing low-fidelity mockups to explore layout and functionality."
+      description: "Rapidly developing low and high-fidelity mockups to explore layout options and functionality."
     },
     {
       name: "Prototyping",
-      level: 90,
+      level: 88,
       category: "Design",
-      description: "Building interactive prototypes to test and validate design solutions."
+      description: "Building interactive prototypes with advanced animations to validate design solutions before development."
     },
     {
       name: "React",
       level: 85,
       category: "Development",
-      description: "Building powerful, interactive UIs with React and modern hooks."
+      description: "Building powerful, interactive UIs with React, including hooks, context, and modern patterns."
     },
     {
       name: "JavaScript/TypeScript",
-      level: 80,
+      level: 83,
       category: "Development",
-      description: "Writing clean, maintainable code with modern JavaScript and TypeScript."
+      description: "Writing clean, maintainable code with modern JavaScript and leveraging TypeScript for type safety."
     },
     {
       name: "HTML/CSS",
       level: 95,
       category: "Development",
-      description: "Creating semantic markup and responsive layouts with modern CSS."
+      description: "Creating semantic markup and responsive layouts with advanced CSS techniques and animations."
     },
     {
       name: "TailwindCSS",
       level: 90,
       category: "Development",
-      description: "Building utility-first designs with speed and consistency."
+      description: "Building utility-first designs with speed and consistency across multiple projects and applications."
     },
     {
       name: "Figma",
-      level: 95,
+      level: 94,
       category: "Tools",
-      description: "Collaborative design, prototyping, and design systems."
+      description: "Advanced use of Figma for design, prototyping, and design systems with component libraries."
     },
     {
       name: "Adobe Creative Suite",
       level: 85,
       category: "Tools",
-      description: "Creating and editing graphics, illustrations, and other visual assets."
+      description: "Creating and editing graphics, illustrations, and visual assets across Photoshop, Illustrator, and XD."
     },
     {
       name: "Accessibility",
-      level: 80,
+      level: 82,
       category: "Expertise",
-      description: "Building inclusive experiences that work for all users."
+      description: "Ensuring designs and implementations meet WCAG standards for inclusive user experiences."
     },
     {
       name: "Responsive Design",
       level: 90,
       category: "Expertise",
-      description: "Creating layouts that work beautifully across all device sizes."
+      description: "Creating layouts that work beautifully and function properly across all device sizes and orientations."
     }
   ];
 
@@ -88,6 +89,14 @@ const Skills = () => {
     : skills.filter(skill => skill.category.toLowerCase() === activeCategory.toLowerCase());
 
   const categories = ['all', ...new Set(skills.map(skill => skill.category.toLowerCase()))];
+
+  const categoryIcons: Record<string, React.ReactNode> = {
+    all: <Lightbulb size={18} />,
+    design: <Palette size={18} />,
+    development: <Code size={18} />,
+    tools: <Hammer size={18} />,
+    expertise: <Lightbulb size={18} />
+  };
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -115,26 +124,42 @@ const Skills = () => {
     <section 
       id="skills" 
       ref={sectionRef}
-      className="container-section bg-muted/30"
+      className="container-section relative overflow-hidden bg-gray-50"
     >
-      <div 
-        className={`transition-all duration-700 ${
-          isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-        }`}
-      >
-        <h2 className="section-title">Skills & Expertise</h2>
+      {/* Background decorative elements */}
+      <div className="absolute top-0 left-0 w-32 h-32 bg-blue-500/5 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
+      <div className="absolute bottom-0 right-0 w-64 h-64 bg-blue-500/5 rounded-full translate-x-1/2 translate-y-1/2"></div>
+      
+      <div className="relative z-10">
+        <div 
+          className={`text-center mb-12 transition-all duration-700 ${
+            isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
+          <span className="px-4 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">My Expertise</span>
+          <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-2 text-gray-900">Skills & Proficiency</h2>
+          <p className="text-gray-600 max-w-xl mx-auto">
+            I've developed a diverse skill set across design and development, allowing me to create 
+            end-to-end solutions with a focus on quality and user experience.
+          </p>
+        </div>
         
-        <div className="flex flex-wrap gap-2 mb-8">
+        <div 
+          className={`flex flex-wrap justify-center gap-2 mb-8 transition-all duration-700 delay-200 ${
+            isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
           {categories.map((category, index) => (
             <button
               key={index}
-              className={`px-4 py-2 rounded-full text-sm capitalize transition-colors ${
+              className={`px-4 py-2 rounded-full text-sm capitalize transition-all flex items-center gap-2 ${
                 activeCategory === category
-                  ? 'bg-primary text-white'
-                  : 'bg-background hover:bg-background/80'
+                  ? 'bg-blue-500 text-white shadow-md'
+                  : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-200'
               }`}
               onClick={() => setActiveCategory(category)}
             >
+              {categoryIcons[category] || <Lightbulb size={18} />}
               {category === 'all' ? 'All Skills' : category}
             </button>
           ))}
