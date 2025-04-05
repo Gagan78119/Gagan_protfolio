@@ -75,7 +75,8 @@ export default {
 			borderRadius: {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
-				sm: 'calc(var(--radius) - 4px)'
+				sm: 'calc(var(--radius) - 4px)',
+				'blob': '40% 60% 60% 40% / 60% 30% 70% 40%',
 			},
 			keyframes: {
 				'accordion-down': {
@@ -137,6 +138,10 @@ export default {
 				'background-pan': {
 					'0%': { backgroundPosition: '0% center' },
 					'100%': { backgroundPosition: '200% center' }
+				},
+				'spin-slow': {
+					'0%': { transform: 'rotate(0deg)' },
+					'100%': { transform: 'rotate(360deg)' }
 				}
 			},
 			animation: {
@@ -151,7 +156,8 @@ export default {
 				'pulse-glow': 'pulse-glow 3s infinite',
 				'rotate-slow': 'rotate-slow 12s linear infinite',
 				'tilt': 'tilt 6s ease-in-out infinite',
-				'background-pan': 'background-pan 3s linear infinite'
+				'background-pan': 'background-pan 3s linear infinite',
+				'spin-slow': 'spin-slow 15s linear infinite'
 			},
 			backgroundImage: {
 				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
