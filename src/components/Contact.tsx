@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useRef, FormEvent } from 'react';
 import { Mail, MessageSquare, Send, Github, Linkedin, Phone, MapPin } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
@@ -139,7 +138,7 @@ const Contact = () => {
                     href="https://github.com" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="p-3 bg-gray-100 hover:bg-blue-100 hover:text-blue-500 rounded-full transition-colors"
+                    className="p-3 bg-gray-50 text-gray-600 hover:bg-blue-500 hover:text-white rounded-full transition-all duration-300"
                     aria-label="GitHub Profile"
                   >
                     <Github size={20} />
@@ -148,7 +147,7 @@ const Contact = () => {
                     href="https://linkedin.com" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="p-3 bg-gray-100 hover:bg-blue-100 hover:text-blue-500 rounded-full transition-colors"
+                    className="p-3 bg-gray-50 text-gray-600 hover:bg-blue-500 hover:text-white rounded-full transition-all duration-300"
                     aria-label="LinkedIn Profile"
                   >
                     <Linkedin size={20} />
@@ -157,13 +156,12 @@ const Contact = () => {
                     href="https://dribbble.com" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="p-3 bg-gray-100 hover:bg-blue-100 hover:text-blue-500 rounded-full transition-colors"
+                    className="p-3 bg-gray-50 text-gray-600 hover:bg-blue-500 hover:text-white rounded-full transition-all duration-300"
                     aria-label="Dribbble Profile"
                   >
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <circle cx="12" cy="12" r="10"></circle>
-                      <path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32"></path>
-                    </svg>
+                    <span className="text-xl">
+                      <i className="fab fa-dribbble"></i>
+                    </span>
                   </a>
                 </div>
               </div>

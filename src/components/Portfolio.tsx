@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
@@ -98,13 +97,21 @@ const Portfolio = () => {
       ref={sectionRef}
       className="container-section"
     >
-      <div 
-        className={`transition-all duration-700 ${
-          isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-        }`}
-      >
-        <h2 className="section-title">My Work</h2>
+      <div className={`mb-12 transition-all duration-700 ${
+        isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+      }`}>
+        <h2 className="text-3xl md:text-4xl font-bold mb-4">
+          <span className="text-gray-900">My</span>{" "}
+          <span className="bg-gradient-to-r from-blue-500 to-indigo-500 bg-clip-text text-transparent">
+            Projects
+          </span>
+        </h2>
+        <div className="h-1 w-24 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full mb-6"></div>
+      </div>
         
+      <div className={`transition-all duration-700 ${
+        isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+      }`}>
         <div className="flex flex-wrap gap-2 mb-8">
           {filters.map((filter, index) => (
             <button

@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from 'react';
 import { ArrowRight, ExternalLink } from 'lucide-react';
 
@@ -105,23 +104,42 @@ const Hero = () => {
         </div>
       </div>
       
-      {/* Service Bar at the bottom */}
-      <div className="absolute bottom-0 left-0 right-0 bg-blue-500 text-white overflow-hidden mx-4 rounded-t-2xl shadow-lg">
-        <div className="flex justify-around items-center text-center py-4">
-          <div className="flex items-center">
-            <span className="font-medium text-sm md:text-base">Digital Marketing</span>
-            <span className="mx-4 text-white text-2xl hidden md:inline-block">★</span>
-          </div>
-          <div className="flex items-center">
-            <span className="font-medium text-sm md:text-base">Website Development</span>
-            <span className="mx-4 text-white text-2xl hidden md:inline-block">★</span>
-          </div>
-          <div className="flex items-center">
-            <span className="font-medium text-sm md:text-base">UI/UX Design</span>
-            <span className="mx-4 text-white text-2xl hidden md:inline-block">★</span>
-          </div>
-          <div className="hidden md:block">
-            <span className="font-medium text-sm md:text-base">Video Editor ★</span>
+      {/* Scrolling Service Banner */}
+      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-600 overflow-hidden">
+        <div className="relative flex items-center h-16">
+          {/* Gradient Overlays */}
+          <div className="absolute left-0 w-24 h-full bg-gradient-to-r from-blue-600 to-transparent z-10"></div>
+          <div className="absolute right-0 w-24 h-full bg-gradient-to-l from-blue-600 to-transparent z-10"></div>
+          
+          {/* Scrolling Content */}
+          <div className="flex animate-scroll whitespace-nowrap">
+            {[...Array(2)].map((_, i) => (
+              <div key={i} className="flex items-center space-x-8 px-8">
+                <div className="flex items-center space-x-2">
+                  <i className="fas fa-paint-brush text-blue-200"></i>
+                  <span className="font-medium">UI/UX Design</span>
+                </div>
+                <span className="text-blue-200">★</span>
+                
+                <div className="flex items-center space-x-2">
+                  <i className="fas fa-code text-blue-200"></i>
+                  <span className="font-medium">Front-End Development</span>
+                </div>
+                <span className="text-blue-200">★</span>
+                
+                <div className="flex items-center space-x-2">
+                  <i className="fas fa-mobile-alt text-blue-200"></i>
+                  <span className="font-medium">Responsive Design</span>
+                </div>
+                <span className="text-blue-200">★</span>
+                
+                <div className="flex items-center space-x-2">
+                  <i className="fas fa-layer-group text-blue-200"></i>
+                  <span className="font-medium">Interactive Prototyping</span>
+                </div>
+                <span className="text-blue-200">★</span>
+              </div>
+            ))}
           </div>
         </div>
       </div>

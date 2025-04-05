@@ -62,7 +62,7 @@ const Navbar = () => {
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex justify-between items-center">
           <a href="#hero" className="text-2xl font-bold text-blue-500 flex items-center">
-            <span className="text-blue-500 text-3xl font-bold">GD</span>
+            <span className="text-blue-500 text-3xl font-bold">Gagan</span>
             <span className="ml-1 text-gray-800 font-semibold hidden sm:inline">Portfolio</span>
           </a>
 

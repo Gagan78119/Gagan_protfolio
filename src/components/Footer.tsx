@@ -1,42 +1,27 @@
-
 import { ArrowUp } from 'lucide-react';
 
 const Footer = () => {
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  };
-
   return (
-    <footer className="bg-card py-10">
-      <div className="container mx-auto px-4">
+    <footer className="bg-gradient-to-r from-blue-50 to-indigo-50 border-t border-blue-100">
+      <div className="container mx-auto px-4 py-8">
         <div className="flex flex-col md:flex-row justify-between items-center">
-          <div className="mb-6 md:mb-0">
-            <a 
-              href="#hero" 
-              className="text-2xl font-bold grad-text"
-            >
-              Design<span className="text-accent">Narrative</span>
-            </a>
-            <p className="mt-2 text-foreground/70 max-w-md">
-              Crafting meaningful digital experiences through thoughtful design and development.
-            </p>
+          <div className="mb-4 md:mb-0">
+            <h3 className="text-xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+              Gagan.dev
+            </h3>
+            <p className="text-gray-600 mt-2">UI/UX Designer & Frontend Developer</p>
           </div>
           
-          <div className="flex flex-col items-center md:items-end">
-            <button
-              onClick={scrollToTop}
-              className="p-3 bg-primary/10 rounded-full hover:bg-primary/20 transition-colors mb-4"
-              aria-label="Scroll to top"
-            >
-              <ArrowUp size={20} className="text-primary" />
-            </button>
-            
-            <p className="text-sm text-foreground/70">
-              &copy; {new Date().getFullYear()} Design Narrative. All rights reserved.
-            </p>
+          <div className="flex space-x-6">
+            <a href="https://github.com" className="text-gray-600 hover:text-blue-600 transition-colors">
+              <i className="fab fa-github text-xl"></i>
+            </a>
+            <a href="https://linkedin.com" className="text-gray-600 hover:text-blue-600 transition-colors">
+              <i className="fab fa-linkedin text-xl"></i>
+            </a>
+            <a href="https://twitter.com" className="text-gray-600 hover:text-blue-600 transition-colors">
+              <i className="fab fa-twitter text-xl"></i>
+            </a>
           </div>
         </div>
       </div>
