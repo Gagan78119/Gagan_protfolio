@@ -1,5 +1,3 @@
-import { ArrowUp } from 'lucide-react';
-
 const Footer = () => {
   return (
     <footer className="bg-gradient-to-r from-blue-50 to-indigo-50 border-t border-blue-100">
@@ -13,13 +11,13 @@ const Footer = () => {
           </div>
           
           <div className="flex space-x-6">
-            <a href="https://github.com" className="text-gray-600 hover:text-blue-600 transition-colors">
+            <a href="https://github.com/Gagan78119" className="text-gray-600 hover:text-blue-600 transition-colors">
               <i className="fab fa-github text-xl"></i>
             </a>
-            <a href="https://linkedin.com" className="text-gray-600 hover:text-blue-600 transition-colors">
+            <a href="https://www.linkedin.com/in/vemula-gagan-dileep-05101a228/" className="text-gray-600 hover:text-blue-600 transition-colors">
               <i className="fab fa-linkedin text-xl"></i>
             </a>
-            <a href="https://twitter.com" className="text-gray-600 hover:text-blue-600 transition-colors">
+            <a href="https://x.com/v_gagan4556" className="text-gray-600 hover:text-blue-600 transition-colors">
               <i className="fab fa-twitter text-xl"></i>
             </a>
           </div>

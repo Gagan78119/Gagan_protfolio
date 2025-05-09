@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, FormEvent } from 'react';
-import { Mail, MessageSquare, Send, Github, Linkedin, Phone, MapPin } from 'lucide-react';
+import { Mail, Send, Github, Linkedin, Phone, MapPin } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
 const Contact = () => {
@@ -100,7 +100,7 @@ const Contact = () => {
                   <div>
                     <h4 className="font-semibold text-gray-800">Email</h4>
                     <a href="mailto:hello@designnarrative.com" className="text-blue-500 hover:underline transition-colors">
-                      hello@designnarrative.com
+                      vemulagagandileep789@gmail.com
                     </a>
                     <p className="text-sm text-gray-500 mt-1">Available for project inquiries 24/7</p>
                   </div>
@@ -113,9 +113,9 @@ const Contact = () => {
                   <div>
                     <h4 className="font-semibold text-gray-800">Phone</h4>
                     <a href="tel:+1234567890" className="text-blue-500 hover:underline transition-colors">
-                      +1 (234) 567-890
+                      +91 9652087119
                     </a>
-                    <p className="text-sm text-gray-500 mt-1">Monday to Friday, 9AM to 6PM</p>
+                    <p className="text-sm text-gray-500 mt-1">Monday to Saturday, 9AM to 6PM</p>
                   </div>
                 </div>
                 
@@ -125,7 +125,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <h4 className="font-semibold text-gray-800">Location</h4>
-                    <p className="text-gray-600">New York, NY</p>
+                    <p className="text-gray-600">kanchikacherla, Andhra Pradesh</p>
                     <p className="text-sm text-gray-500 mt-1">Available for remote work globally</p>
                   </div>
                 </div>
@@ -135,7 +135,7 @@ const Contact = () => {
                 <h4 className="font-semibold text-gray-800 mb-4">Connect With Me</h4>
                 <div className="flex gap-4">
                   <a 
-                    href="https://github.com" 
+                    href="https://github.com/Gagan78119" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="p-3 bg-gray-50 text-gray-600 hover:bg-blue-500 hover:text-white rounded-full transition-all duration-300"
@@ -144,7 +144,7 @@ const Contact = () => {
                     <Github size={20} />
                   </a>
                   <a 
-                    href="https://linkedin.com" 
+                    href="https://www.linkedin.com/in/vemula-gagan-dileep-05101a228/" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="p-3 bg-gray-50 text-gray-600 hover:bg-blue-500 hover:text-white rounded-full transition-all duration-300"
@@ -190,7 +190,7 @@ const Contact = () => {
                     onChange={handleChange}
                     required
                     className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 outline-none transition-all"
-                    placeholder="John Doe"
+                    placeholder="Enter your name"
                   />
                 </div>
                 
@@ -206,7 +206,7 @@ const Contact = () => {
                     onChange={handleChange}
                     required
                     className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 outline-none transition-all"
-                    placeholder="john@example.com"
+                    placeholder="email@example.com"
                   />
                 </div>
               </div>

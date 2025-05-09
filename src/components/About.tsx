@@ -29,21 +29,21 @@ const About = () => {
 
   const timelineEvents = [
     {
-      year: "2022",
-      title: "Started UI/UX Journey",
-      description: "Began learning design principles and user experience fundamentals",
+      year: "2023",
+      title: "Started Frontend Development",
+      description: "Started learning HTML, CSS, JavaScript, React and modern web technologies",
       icon: GraduationCap
     },
     {
-      year: "2022",
-      title: "Frontend Development",
-      description: "Started learning React, JavaScript, and modern web technologies",
+      year: "2024",
+      title: "Started UI/UX Journey",
+      description: "Began learning design principles and user experience fundamentals",
       icon: Code
     },
     {
-      year: "2023",
-      title: "First Client Project",
-      description: "Successfully delivered a full-stack web application with modern UI",
+      year: "2024",
+      title: "completed First project",
+      description: "Successfully completed a full-stack web application with modern UI",
       icon: Award
     },
     {

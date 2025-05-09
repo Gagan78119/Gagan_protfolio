@@ -50,7 +50,7 @@ const Hero = () => {
                 Hire Me
                 <ArrowRight size={16} className="ml-2" />
               </a>
-              <a href="https://wa.me/1234567890" target="_blank" rel="noopener noreferrer" className="px-8 py-3 border-2 border-gray-300 text-gray-700 rounded-full hover:border-blue-500 hover:text-blue-500 transition-all transform hover:scale-105 flex items-center">
+              <a href="https://wa.me/9652087119" target="_blank" rel="noopener noreferrer" className="px-8 py-3 border-2 border-gray-300 text-gray-700 rounded-full hover:border-blue-500 hover:text-blue-500 transition-all transform hover:scale-105 flex items-center">
                 Whatsapp
                 <ExternalLink size={16} className="ml-2" />
               </a>
@@ -59,17 +59,17 @@ const Hero = () => {
           
           {/* Right column - Image with floating elements */}
           <div className={`relative transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            <div className="relative">
+            <div className="relative flex items-center justify-center h-full mb-24 sm:mb-28 md:mb-20 lg:mb-24">
               {/* Main image with blue blob background */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] h-[90%] bg-blue-500 rounded-blob z-0 animate-pulse-slow"></div>
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[85%] h-[85%] bg-blue-500 rounded-blob z-0 animate-pulse-slow"></div>
               <img 
                 alt="Gagan Dileep - Web Designer and Developer" 
                 src="/lovable-uploads/af7a47d6-b34d-49d7-98d7-381e6005c973.jpg" 
-                className="relative z-10 mx-auto rounded-3xl shadow-xl border-4 border-white object-cover w-[80%] h-auto"
+                className="relative z-10 rounded-3xl shadow-xl border-4 border-white object-cover aspect-[4/5] w-full max-w-[300px] sm:max-w-[320px] md:max-w-[350px] lg:max-w-[380px]"
               />
               
-              {/* Floating badge - Web Designer */}
-              <div className="absolute top-5 md:top-10 left-0 bg-white shadow-lg p-3 rounded-xl transform -translate-x-1/4 animate-float z-20">
+              {/* Floating badges positioned relative to image container */}
+              <div className="absolute top-5 left-[5%] bg-white shadow-lg p-3 rounded-xl transform -translate-x-1/4 animate-float z-20">
                 <div className="flex items-center gap-2">
                   <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
@@ -136,6 +136,12 @@ const Hero = () => {
                 <div className="flex items-center space-x-2">
                   <i className="fas fa-layer-group text-blue-200"></i>
                   <span className="font-medium">Interactive Prototyping</span>
+                </div>
+                <span className="text-blue-200">★</span>
+                
+                <div className="flex items-center space-x-2">
+                  <i className="fas fa-layer-group text-blue-200"></i>
+                  <span className="font-medium">Video Editing</span>
                 </div>
                 <span className="text-blue-200">★</span>
               </div>
