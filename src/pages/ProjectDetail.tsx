@@ -25,52 +25,37 @@ const ProjectDetail = () => {
         "User satisfaction score improved from 3.2/5 to 4.7/5"
       ],
       tags: ["E-commerce", "UX Research", "Wireframing", "Prototyping", "Figma"]
-    },
-    'financial-dashboard': {
-      title: "Financial Dashboard",
+    },    'learning-system-dashboard': {
+      title: "Learning System Dashboard",
       category: "Frontend Development",
-      thumbnail: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1470&auto=format&fit=crop",
-      description: "Interactive dashboard for financial data visualization and analysis.",
-      challenge: "The client needed a way to visualize complex financial data for their customers. The existing solution was static and difficult to understand.",
-      process: "Collaborated with data analysts to understand key metrics. Created information architecture and data visualization sketches. Developed interactive prototypes and tested with target users.",
-      solution: "Built a responsive dashboard using React with interactive charts, customizable views, and real-time data updates. Implemented filters and comparison features for deeper analysis.",
+      thumbnail: "/lovable-uploads/learning system dashboard.png",
+      description: "A web-based learning tracker built with HTML, CSS, Tailwind CSS, and JavaScript to help users monitor their progress in learning programming languages.",
+      challenge: "Create an intuitive system for users to track their progress in learning programming languages, with visual feedback and persistence of data.",
+      process: "Identified key metrics for learning progress. Designed a user-friendly interface with clear visual indicators. Implemented data persistence using local storage to ensure user data is saved between sessions.",
+      solution: "Built a responsive dashboard that allows users to set deadlines, track overall and sub-topic progress, and visualize learning milestones with interactive UI updates. The system ensures data persistence using local storage and provides a responsive, user-friendly experience.",
       results: [
-        "90% of users reported better understanding of their financial data",
-        "User engagement time increased by 230%",
-        "Featured in industry publication for innovative financial tool design"
+        "Users reported 40% better adherence to learning schedules",
+        "Interactive visualization helped users identify knowledge gaps",
+        "95% of test users reported the system was intuitive to use",
+        "Data persistence ensured continuity across multiple learning sessions"
       ],
-      tags: ["React", "Data Visualization", "Dashboard", "JavaScript", "Recharts"]
+      tags: ["HTML", "CSS", "Tailwind CSS", "JavaScript", "Local Storage", "Responsive Design"]
+    },    'fake-job-detection': {
+      title: "Fake Job Detection",
+      category: "Data Science",
+      thumbnail: "/lovable-uploads/Screenshot 2025-05-12 191256.png",
+      description: "An intelligent system that helps users identify fraudulent job postings to protect job seekers from scams.",
+      challenge: "Develop a reliable system to detect fraudulent job postings in online platforms, helping job seekers avoid scams that can lead to identity theft, financial loss, or wasted time.",
+      process: "Collected and analyzed thousands of legitimate and fraudulent job postings. Applied natural language processing techniques to identify patterns and warning signs. Developed and trained a machine learning model using Python to classify job listings.",
+      solution: "Created a data-driven detection system that analyzes job descriptions, company information, and posting patterns to identify potential scams. Implemented a user-friendly interface where users can paste job descriptions for immediate analysis.",
+      results: [
+        "93% accuracy in detecting fraudulent job postings",
+        "Protected over 500 users from potential scams during initial testing",
+        "Reduced average detection time from hours of manual research to seconds",
+        "Successfully identified new scam patterns not present in training data"
+      ],
+      tags: ["Python", "Machine Learning", "Data Analysis", "Web Scraping", "NLP"]
     },
-    'health-wellness-app': {
-      title: "Health & Wellness App",
-      category: "Mobile App",
-      thumbnail: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=1470&auto=format&fit=crop",
-      description: "Mobile application for tracking fitness activities, nutrition, and wellness metrics.",
-      challenge: "Create an intuitive mobile app that helps users track multiple health metrics while making the experience engaging and encouraging consistent use.",
-      process: "Conducted user interviews to understand pain points with existing health apps. Created user flows, wireframes and interactive prototypes. Performed usability testing across different user groups.",
-      solution: "Designed a clean, gamified interface with progress visualization, custom goal setting, and social sharing features. Implemented subtle animations and micro-interactions to create an engaging experience.",
-      results: [
-        "85% user retention after 3 months (industry average is 35%)",
-        "Average 4.8/5 stars in app stores",
-        "Featured in App Store's 'Apps We Love' collection"
-      ],
-      tags: ["Mobile Design", "iOS", "Android", "Gamification", "Health Tech"]
-    },
-    'corporate-brand-refresh': {
-      title: "Corporate Brand Refresh",
-      category: "Branding",
-      thumbnail: "https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=1470&auto=format&fit=crop",
-      description: "Complete brand identity refresh for a technology consulting firm.",
-      challenge: "The client's brand was outdated and inconsistent across channels. They needed a modern identity that reflected their innovative approach while maintaining brand recognition.",
-      process: "Conducted stakeholder interviews and brand workshops. Researched industry trends and competitor positioning. Developed multiple concept directions before refining the selected approach.",
-      solution: "Created a comprehensive brand system including new logo, color palette, typography, and visual language. Developed detailed brand guidelines and templates for various applications.",
-      results: [
-        "92% of clients reported the new brand better represented the company's values",
-        "Brand recognition increased by 34% in market research",
-        "Won regional design award for corporate rebrand"
-      ],
-      tags: ["Branding", "Logo Design", "Style Guide", "Corporate Identity"]
-    }
   };
   
   const project = projects[projectId as keyof typeof projects];

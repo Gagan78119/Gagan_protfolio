@@ -27,46 +27,32 @@ const Portfolio = () => {
       description: "Complete redesign of an e-commerce platform to improve user experience and increase conversions.",
       tags: ["E-commerce", "UX Research", "Wireframing", "Prototyping", "Figma"],
       link: "/projects/ecommerce-redesign"
-    },
-    {
+    },    {
       id: 2,
-      title: "Financial Dashboard",
+      title: "Learning System Dashboard",
       category: "Frontend Development",
-      thumbnail: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1470&auto=format&fit=crop",
-      description: "Interactive dashboard for financial data visualization and analysis.",
-      tags: ["React", "Data Visualization", "Dashboard", "JavaScript", "Recharts"],
-      link: "/projects/financial-dashboard"
-    },
-    {
+      thumbnail: "/lovable-uploads/learning system dashboard.png",
+      description: "A web-based learning tracker built with HTML, CSS, Tailwind CSS, and JavaScript to help users monitor their progress in learning programming languages.",
+      tags: ["HTML", "CSS", "Tailwind CSS", "JavaScript", "Local Storage"],
+      link: "/projects/learning-system-dashboard"
+    },    {
       id: 3,
-      title: "Health & Wellness App",
-      category: "Mobile App",
-      thumbnail: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=1470&auto=format&fit=crop",
-      description: "Mobile application for tracking fitness activities, nutrition, and wellness metrics.",
-      tags: ["Mobile Design", "iOS", "Android", "Gamification", "Health Tech"],
-      link: "/projects/health-wellness-app"
+      title: "Fake Job Detection",
+      category: "Data Science",
+      thumbnail: "/lovable-uploads/Screenshot 2025-05-12 191256.png",
+      description: "An intelligent system that helps users identify fraudulent job postings to protect job seekers from scams.",
+      tags: ["Python", "Machine Learning", "Data Analysis", "Web Scraping", "NLP"],
+      link: "/projects/fake-job-detection"
     },
-    {
-      id: 4,
-      title: "Corporate Brand Refresh",
-      category: "Branding",
-      thumbnail: "https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=1470&auto=format&fit=crop",
-      description: "Complete brand identity refresh for a technology consulting firm.",
-      tags: ["Branding", "Logo Design", "Style Guide", "Corporate Identity"],
-      link: "/projects/corporate-brand-refresh"
-    }
   ];
 
   const filteredProjects = activeFilter === 'all' 
     ? projects 
-    : projects.filter(project => project.category.toLowerCase().includes(activeFilter.toLowerCase()));
-
-  const filters = [
+    : projects.filter(project => project.category.toLowerCase().includes(activeFilter.toLowerCase()));  const filters = [
     { label: 'All Projects', value: 'all' },
     { label: 'UX/UI', value: 'ux/ui' },
     { label: 'Frontend', value: 'frontend' },
-    { label: 'Mobile', value: 'mobile' },
-    { label: 'Branding', value: 'branding' }
+    { label: 'Data Science', value: 'data science' }
   ];
 
   useEffect(() => {
