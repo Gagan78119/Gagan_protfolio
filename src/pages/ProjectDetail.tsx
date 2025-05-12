@@ -169,9 +169,7 @@ const ProjectDetail = () => {
                 ))}
               </ul>
             </div>
-          </div>
-
-          <div className="flex justify-between items-center mb-12">
+          </div>          <div className="flex justify-between items-center mb-12">
             <Link 
               to="/#portfolio"
               className="px-6 py-3 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors inline-flex items-center font-medium"
@@ -181,7 +179,15 @@ const ProjectDetail = () => {
             </Link>
             
             <a 
-              href="#"
+              href={
+                projectId === 'learning-system-dashboard' 
+                  ? 'https://skill-flow.netlify.app/' 
+                  : projectId === 'fake-job-detection'
+                  ? 'https://fake-job-detection.vercel.app/'
+                  : '#'
+              }
+              target="_blank"
+              rel="noopener noreferrer"
               className="px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors inline-flex items-center font-medium"
             >
               <span>Visit Live Project</span>
