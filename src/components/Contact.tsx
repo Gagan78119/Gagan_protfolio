@@ -22,16 +22,21 @@ const Contact = () => {
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Simulate form submission
+
+    // Format the message for WhatsApp
+    const whatsappMessage = `Name: ${formData.name}%0AEmail: ${formData.email}%0AMessage: ${formData.message}`;
+    const whatsappNumber = '919652087119'; // Your WhatsApp number in international format, no + or spaces
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
+
+    // Open WhatsApp in a new tab
+    window.open(whatsappUrl, '_blank');
+
     setTimeout(() => {
       setIsSubmitting(false);
       toast({
         title: "Message sent!",
         description: "Thanks for reaching out. I'll get back to you soon.",
       });
-      
-      // Reset form
       setFormData({
         name: '',
         email: '',
@@ -144,7 +149,7 @@ const Contact = () => {
                     <Github size={20} />
                   </a>
                   <a 
-                    href="https://www.linkedin.com/in/vemula-gagan-dileep-05101a228/" 
+                    href="https://www.linkedin.com/in/vemulagagandileep/" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="p-3 bg-gray-50 text-gray-600 hover:bg-blue-500 hover:text-white rounded-full transition-all duration-300"
@@ -153,7 +158,7 @@ const Contact = () => {
                     <Linkedin size={20} />
                   </a>
                   <a 
-                    href="https://dribbble.com" 
+                    href="https://dribbble.com/Gagan-problem-solve" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="p-3 bg-gray-50 text-gray-600 hover:bg-blue-500 hover:text-white rounded-full transition-all duration-300"
@@ -222,7 +227,7 @@ const Contact = () => {
                   onChange={handleChange}
                   required
                   rows={6}
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 outline-none transition-all"
+                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 outline-none transition-all text-gray-900"
                   placeholder="Tell me about your project or inquiry..."
                 />
               </div>

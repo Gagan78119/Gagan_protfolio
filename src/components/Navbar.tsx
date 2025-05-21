@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, Linkedin } from 'lucide-react';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -85,11 +85,13 @@ const Navbar = () => {
             </div>
 
             <a 
-              href="#contact" 
+              href="https://www.linkedin.com/in/vemulagagandileep/" 
+              target="_blank"
+              rel="noopener noreferrer"
               className="ml-4 px-6 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-colors flex items-center gap-2"
             >
-              <span>Contact me</span>
-              <ChevronDown size={16} className={`transform transition-transform ${activeSection === 'contact' ? 'rotate-180' : ''}`} />
+              <span>LinkedIn</span>
+              <Linkedin size={18} />
             </a>
           </div>
 
@@ -175,26 +177,18 @@ const Navbar = () => {
             ))}
             
             <a 
-              href="#contact" 
+              href="https://www.linkedin.com/in/vemulagagandileep/" 
+              target="_blank"
+              rel="noopener noreferrer"
               className="mt-8 px-8 py-3 bg-gradient-to-r from-blue-500 to-indigo-500 text-white rounded-full hover:shadow-lg hover:shadow-blue-500/20 transition-all duration-300 flex items-center justify-center gap-2 w-full max-w-xs"
-              onClick={(e) => {
-                e.preventDefault();
-                toggleMenu();
-                setTimeout(() => {
-                  window.scrollTo({
-                    top: document.getElementById('contact')?.offsetTop || 0,
-                    behavior: 'smooth'
-                  });
-                }, 300);
-              }}
               style={{
                 transitionDelay: isMenuOpen ? `${navLinks.length * 100 + 100}ms` : '0ms',
                 opacity: isMenuOpen ? 1 : 0,
                 transform: isMenuOpen ? 'translateY(0)' : 'translateY(20px)'
               }}
             >
-              Contact me
-              <ChevronDown size={16} className="animate-bounce" />
+              LinkedIn
+              <Linkedin size={18} />
             </a>
           </div>
         </div>

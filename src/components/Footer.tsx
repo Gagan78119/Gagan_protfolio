@@ -5,7 +5,7 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-4 md:mb-0">
             <h3 className="text-xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-              Gagan.dev
+              Gagan Dileep
             </h3>
             <p className="text-gray-600 mt-2">UI/UX Designer & Frontend Developer</p>
           </div>
@@ -14,7 +14,7 @@ const Footer = () => {
             <a href="https://github.com/Gagan78119" className="text-gray-600 hover:text-blue-600 transition-colors">
               <i className="fab fa-github text-xl"></i>
             </a>
-            <a href="https://www.linkedin.com/in/vemula-gagan-dileep-05101a228/" className="text-gray-600 hover:text-blue-600 transition-colors">
+            <a href="https://www.linkedin.com/in/vemulagagandileep/" className="text-gray-600 hover:text-blue-600 transition-colors">
               <i className="fab fa-linkedin text-xl"></i>
             </a>
             <a href="https://x.com/v_gagan4556" className="text-gray-600 hover:text-blue-600 transition-colors">
