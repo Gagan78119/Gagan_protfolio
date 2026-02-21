@@ -1,151 +1,169 @@
 import { useEffect, useState } from 'react';
-import { ArrowRight, ExternalLink } from 'lucide-react';
 
 const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
-  
+
   useEffect(() => {
-    setIsVisible(true);
+    const t = setTimeout(() => setIsVisible(true), 100);
+    return () => clearTimeout(t);
   }, []);
-  
+
   return (
-    <section id="hero" className="min-h-screen flex items-center bg-gradient-to-br from-gray-50 to-white relative overflow-hidden pt-20">
-      {/* Background pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute w-full h-full bg-[radial-gradient(circle_at_center,_#3b82f6_1px,_transparent_1px)] bg-[length:40px_40px]"></div>
+    <section
+      id="hero"
+      className="relative min-h-screen flex flex-col items-center overflow-hidden bg-[#FAFAFA]"
+    >
+      {/* Clean Textured Background — matching site blue/white theme */}
+      <div 
+        className={`fixed md:absolute inset-0 transition-opacity duration-2000 ${isVisible ? 'opacity-100' : 'opacity-0'} pointer-events-none z-0 bg-[#F8F9FA]`}
+      >
+        {/* Base: subtle cool gradient matching About/Skills/Contact sections */}
+        <div 
+          className="absolute inset-0 w-full h-full"
+          style={{
+            background: 'linear-gradient(170deg, #FAFAFA 0%, #F0F4FA 35%, #EBF2FC 60%, #EFF6FF 100%)',
+          }}
+        />
+        
+        {/* Subtle dot grid pattern in cool gray-blue */}
+        <div 
+          className="absolute inset-0 opacity-[0.3]"
+          style={{
+            backgroundImage: 'radial-gradient(circle, #CBD5E1 0.7px, transparent 0.7px)',
+            backgroundSize: '26px 26px',
+          }}
+        />
+
+        {/* Very soft blue accent glow — center */}
+        <div 
+          className="absolute top-[35%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[70vw] h-[55vh]"
+          style={{
+            background: 'radial-gradient(ellipse at center, rgba(191, 219, 254, 0.25) 0%, rgba(219, 234, 254, 0.12) 40%, transparent 70%)',
+            filter: 'blur(80px)',
+          }}
+        />
+
+        {/* Soft bottom-left blue tint — matches footer/contact gradient direction */}
+        <div 
+          className="absolute bottom-[-5%] left-[-5%] w-[50vw] h-[40vh]"
+          style={{
+            background: 'radial-gradient(ellipse at 30% 80%, rgba(191, 219, 254, 0.18) 0%, transparent 65%)',
+            filter: 'blur(70px)',
+          }}
+        />
+        
+        {/* Film grain / noise texture */}
+        <div 
+          className="absolute inset-0 opacity-[0.03] mix-blend-multiply"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+            backgroundRepeat: 'repeat',
+          }}
+        />
+        
+        {/* Top fade for navbar readability */}
+        <div 
+          className="absolute top-0 left-0 w-full h-[12vh] bg-gradient-to-b from-[#FAFAFA] to-transparent" 
+        />
       </div>
 
-      <div className="container mx-auto px-4">
-        <div className="grid md:grid-cols-2 gap-8 items-center">
-          {/* Left column - Text content */}
-          <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            {/* Hello badge */}
-            <div className="inline-block mb-4 relative">
-              <div className="relative border-2 border-blue-500 px-5 py-1">
-                <div className="absolute w-2 h-2 bg-blue-500 -top-1 -left-1"></div>
-                <div className="absolute w-2 h-2 bg-blue-500 -top-1 -right-1"></div>
-                <div className="absolute w-2 h-2 bg-blue-500 -bottom-1 -left-1"></div>
-                <div className="absolute w-2 h-2 bg-blue-500 -bottom-1 -right-1"></div>
-                <span className="text-gray-800 font-medium">Hello !</span>
-              </div>
-            </div>
-            
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight">
-              <span className="text-gray-900">I'm </span>
-              <span className="text-blue-500 relative">
-                <span className="relative z-10">Gagan Dileep</span>
-                <span className="absolute bottom-1 left-0 w-full h-1 bg-blue-500/30 z-0"></span>
-              </span>
-              <span className="block text-gray-900 mt-2 font-semibold my-[11px] text-5xl">UI/UX Designer &</span>
-              <span className="block text-gray-900 font-semibold text-5xl">FrontEnd Developer</span>
-            </h1>
-            
-            <p className="text-gray-500 max-w-lg mb-8 text-lg">
-              Creating stunning digital experiences that seamlessly blend aesthetics and functionality.
-              Specialized in building interactive websites and intuitive user interfaces.
-            </p>
-            
-            <div className="flex flex-wrap gap-4 my-0">
-              <a href="#contact" className="px-8 py-3 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition-all transform hover:scale-105 flex items-center">
-                Hire Me
-                <ArrowRight size={16} className="ml-2" />
-              </a>
-              <a href="https://wa.me/9652087119" target="_blank" rel="noopener noreferrer" className="px-8 py-3 border-2 border-gray-300 text-gray-700 rounded-full hover:border-blue-500 hover:text-blue-500 transition-all transform hover:scale-105 flex items-center">
-                Whatsapp
-                <ExternalLink size={16} className="ml-2" />
-              </a>
-            </div>
-          </div>
-          
-          {/* Right column - Image with floating elements */}
-          <div className={`relative transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            <div className="relative flex items-center justify-center h-full mb-24 sm:mb-28 md:mb-20 lg:mb-24">
-              {/* Main image with blue blob background */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[85%] h-[85%] bg-blue-500 rounded-blob z-0 animate-pulse-slow"></div>
-              <img 
-                alt="Gagan Dileep - Web Designer and Developer" 
-                src="/lovable-uploads/af7a47d6-b34d-49d7-98d7-381e6005c973.jpg" 
-                className="relative z-10 rounded-3xl shadow-xl border-4 border-white object-cover aspect-[4/5] w-full max-w-[300px] sm:max-w-[320px] md:max-w-[350px] lg:max-w-[380px]"
-              />
-              
-              {/* Floating badges positioned relative to image container */}
-              <div className="absolute top-5 left-[5%] bg-white shadow-lg p-3 rounded-xl transform -translate-x-1/4 animate-float z-20">
-                <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
-                      <path fillRule="evenodd" d="M3 5a2 2 0 012-2h10a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V5zm11 1h-1v3a1 1 0 01-1 1H8a1 1 0 01-1-1V6H6v3a2 2 0 002 2h2a2 2 0 002-2V6z" clipRule="evenodd" />
-                    </svg>
-                  </div>
-                  <span className="font-semibold text-gray-800">Web Developer</span>
-                </div>
-              </div>
-              
-              {/* Floating badge - UI/UX Designer */}
-              <div className="absolute bottom-5 md:bottom-10 right-0 bg-white shadow-lg p-3 rounded-xl transform translate-x-1/4 animate-float animation-delay-1000 z-20">
-                <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-purple-500" viewBox="0 0 20 20" fill="currentColor">
-                      <path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z" />
-                      <path fillRule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clipRule="evenodd" />
-                    </svg>
-                  </div>
-                  <span className="font-semibold text-gray-800">UI/UX Designer</span>
-                </div>
-              </div>
-              
-              {/* Decorative element */}
-              <div className="absolute top-1/4 left-0 w-8 h-8 text-blue-500 animate-spin-slow">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M12 2L12 22M17 5L7 19M19 12H5M7 5L17 19"></path>
-                </svg>
-              </div>
-            </div>
-          </div>
+      <div className="relative w-full max-w-[1400px] mx-auto px-6 lg:px-12 flex flex-col h-screen pt-24 md:pt-[12vh] z-10">
+        
+        {/* Top Typography Header */}
+        <div className={`text-center z-0 transition-all duration-1000 delay-200 w-full ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <h1 className="text-4xl md:text-5xl lg:text-[64px] font-medium tracking-tight text-gray-900 leading-none mb-1 md:mb-3">
+            Hi I'm Gagan
+          </h1>
+          <h2 
+            className="text-6xl md:text-[110px] lg:text-[140px] xl:text-[160px] font-light italic tracking-tight text-gray-950 leading-[1] md:leading-[0.85] select-none"
+            style={{ fontFamily: '"Playfair Display", Georgia, "Times New Roman", serif' }}
+          >
+            Product Designer
+          </h2>
         </div>
-      </div>
-      
-      {/* Scrolling Service Banner */}
-      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-600 overflow-hidden">
-        <div className="relative flex items-center h-16">
-          {/* Gradient Overlays */}
-          <div className="absolute left-0 w-24 h-full bg-gradient-to-r from-blue-600 to-transparent z-10"></div>
-          <div className="absolute right-0 w-24 h-full bg-gradient-to-l from-blue-600 to-transparent z-10"></div>
+
+        {/* Central Layout containing Floating elements & Portrait */}
+        <div className="relative flex-grow flex w-full">
           
-          {/* Scrolling Content */}
-          <div className="flex animate-scroll whitespace-nowrap">
-            {[...Array(2)].map((_, i) => (
-              <div key={i} className="flex items-center space-x-8 px-8">
-                <div className="flex items-center space-x-2">
-                  <i className="fas fa-paint-brush text-blue-200"></i>
-                  <span className="font-medium">UI/UX Design</span>
-                </div>
-                <span className="text-blue-200">★</span>
-                
-                <div className="flex items-center space-x-2">
-                  <i className="fas fa-code text-blue-200"></i>
-                  <span className="font-medium">Front-End Development</span>
-                </div>
-                <span className="text-blue-200">★</span>
-                
-                <div className="flex items-center space-x-2">
-                  <i className="fas fa-mobile-alt text-blue-200"></i>
-                  <span className="font-medium">Responsive Design</span>
-                </div>
-                <span className="text-blue-200">★</span>
-                
-                <div className="flex items-center space-x-2">
-                  <i className="fas fa-layer-group text-blue-200"></i>
-                  <span className="font-medium">Interactive Prototyping</span>
-                </div>
-                <span className="text-blue-200">★</span>
-                
-                <div className="flex items-center space-x-2">
-                  <i className="fas fa-layer-group text-blue-200"></i>
-                  <span className="font-medium">Video Editing</span>
-                </div>
-                <span className="text-blue-200">★</span>
+          {/* Left Floating Badge (Availability) */}
+          <div className={`absolute left-0 md:left-[2%] lg:left-[5%] top-[15%] md:top-[25%] z-20 transition-all duration-1000 delay-500 hidden sm:block ${isVisible ? 'opacity-100 -translate-x-0' : 'opacity-0 -translate-x-8'}`}>
+            <div className="inline-flex items-center gap-3 px-5 py-3 bg-white/90 backdrop-blur-md rounded-full shadow-[0_4px_20px_rgb(0,0,0,0.06)] border border-white">
+              <span className="relative flex h-3 w-3">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-3 w-3 bg-blue-500 m-[0px] border border-white"></span>
+              </span>
+              <span className="text-sm font-semibold text-gray-800 tracking-wide">Available for new opportunities</span>
+            </div>
+          </div>
+
+          <div className="flex w-full sm:hidden absolute top-[10%] items-center justify-center z-20">
+             <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/90 backdrop-blur-sm rounded-full shadow-sm border border-white/50">
+                <div className="w-2 h-2 rounded-full bg-blue-500 animate-[pulse_2s_cubic-bezier(0.4,0,0.6,1)_infinite]"></div>
+                <span className="text-[11px] font-semibold tracking-wide">Available for work</span>
+             </div>
+          </div>
+
+          {/* Right Floating Text (Bio) */}
+          <div className={`absolute right-0 md:right-[2%] lg:right-[5%] top-[25%] md:top-[30%] z-20 max-w-[240px] lg:max-w-[300px] text-right transition-all duration-1000 delay-600 hidden md:block ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'}`}>
+            <p className="text-lg lg:text-xl text-gray-900 font-medium leading-[1.4] tracking-tight">
+              passionate about creating intuitive digital experiences that connect users with value.
+            </p>
+          </div>
+
+          {/* Center Portrait Image */}
+          <div className={`absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-[60vh] md:h-[65vh] xl:h-[72vh] flex justify-center items-end z-10 transition-all duration-1000 delay-300 pointer-events-none ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
+             {/* Glow behind portrait for depth */}
+             <div 
+                className="absolute bottom-[5%] left-1/2 -translate-x-1/2 w-[400px] h-[400px] md:w-[500px] md:h-[500px] rounded-full -z-10"
+                style={{
+                  background: 'radial-gradient(circle, rgba(147, 197, 253, 0.18) 0%, rgba(191, 219, 254, 0.1) 40%, transparent 70%)',
+                  filter: 'blur(60px)',
+                }}
+             />
+             <img
+                src="/lovable-uploads/gaganpro.png"
+                alt="Gagan Portfolio Portrait"
+                className="relative h-full w-auto object-contain object-bottom drop-shadow-[0_20px_40px_rgba(0,0,0,0.2)] pointer-events-auto"
+                style={{
+                  WebkitMaskImage: 'linear-gradient(to top, transparent 0%, black 15%, black 100%)',
+                  maskImage: 'linear-gradient(to top, transparent 0%, black 15%, black 100%)'
+                }}
+              />
+          </div>
+
+          {/* Lower Floating Elements (Avatars & CTA) */}
+          <div className="absolute bottom-6 md:bottom-10 lg:bottom-12 w-full flex flex-col md:flex-row justify-between items-center md:items-end z-20 px-4 md:px-0 gap-6 md:gap-0">
+            
+            {/* Left: Trusted By */}
+            <div className={`flex flex-col sm:flex-row items-center gap-3 sm:gap-4 transition-all duration-1000 delay-700 w-full md:w-auto justify-center md:justify-start ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+              <div className="flex -space-x-4">
+                <img className="w-10 h-10 lg:w-[48px] lg:h-[48px] rounded-full border-[3px] border-[#FAFBFA] object-cover" src="https://i.pravatar.cc/100?img=33" alt="Client 1" />
+                <img className="w-10 h-10 lg:w-[48px] lg:h-[48px] rounded-full border-[3px] border-[#FAFBFA] object-cover shadow-sm" src="https://i.pravatar.cc/100?img=12" alt="Client 2" />
+                <img className="w-10 h-10 lg:w-[48px] lg:h-[48px] rounded-full border-[3px] border-[#FAFBFA] object-cover shadow-sm" src="https://i.pravatar.cc/100?img=44" alt="Client 3" />
               </div>
-            ))}
+              <div className="text-[11px] lg:text-xs text-gray-700 font-medium max-w-[150px] lg:max-w-[180px] leading-tight text-center sm:text-left">
+                Trusted by over <strong className="text-gray-900 font-semibold">15+ happy clients</strong> across residential and commercial projects.
+              </div>
+            </div>
+
+            {/* Right: Get In Touch CTA */}
+            <div className={`transition-all duration-1000 delay-800 w-full md:w-auto flex justify-center md:justify-end ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}>
+               <a
+                href="#contact"
+                className="group inline-flex items-center justify-center gap-3 px-8 lg:px-10 py-3.5 lg:py-4 bg-[#18181B] text-white text-[15px] font-medium rounded-full hover:bg-black transition-all duration-300 shadow-[0_8px_25px_rgba(0,0,0,0.15)] hover:shadow-[0_12px_30px_rgba(0,0,0,0.25)] hover:-translate-y-1"
+              >
+                <span>Get in Touch</span>
+                <svg 
+                  className="w-4 h-4 lg:w-5 lg:h-5 group-hover:translate-x-1 transition-transform" 
+                  fill="none" 
+                  viewBox="0 0 24 24" 
+                  stroke="currentColor"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </a>
+            </div>
+
           </div>
         </div>
       </div>

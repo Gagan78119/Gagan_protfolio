@@ -130,7 +130,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <h4 className="font-semibold text-gray-800">Location</h4>
-                    <p className="text-gray-600">kanchikacherla, Andhra Pradesh</p>
+                    <p className="text-gray-600">Hyderabad, KPHP Colony, Telangana</p>
                     <p className="text-sm text-gray-500 mt-1">Available for remote work globally</p>
                   </div>
                 </div>
